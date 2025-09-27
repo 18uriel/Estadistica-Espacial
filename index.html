@@ -69,7 +69,7 @@
             background: rgba(15, 20, 34, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 20px 0;
+            padding: 15px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
         }
@@ -80,8 +80,27 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.8rem;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
             font-weight: 800;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
@@ -89,9 +108,25 @@
             background-clip: text;
         }
 
+        .university-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .university-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 35px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -100,6 +135,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
@@ -161,7 +197,7 @@
         }
 
         .hero-title {
-            font-size: 4.5rem;
+            font-size: 4rem;
             font-weight: 900;
             background: linear-gradient(135deg, #FFFFFF 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
@@ -200,13 +236,13 @@
             border-radius: 20px;
             padding: 30px;
             margin: 40px auto;
-            max-width: 600px;
+            max-width: 700px;
             animation: slideUp 1s ease-out 0.4s both;
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
@@ -228,6 +264,26 @@
         .info-item i {
             color: var(--primary);
             font-size: 1.5rem;
+        }
+
+        .university-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .university-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 5px;
+        }
+
+        .university-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-gray);
         }
 
         /* Buttons */
@@ -281,7 +337,7 @@
 
         .section-title {
             text-align: center;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 800;
             margin-bottom: 60px;
             background: linear-gradient(135deg, #FFFFFF 0%, var(--primary-light) 100%);
@@ -477,11 +533,19 @@
                 display: none;
             }
 
+            .university-info {
+                display: none;
+            }
+
             .btn-group {
                 flex-direction: column;
             }
 
             .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -495,7 +559,16 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">AIStatsEspacial</div>
+                <div class="logo-container">
+                    <div class="logo-image">UNA</div>
+                    <div class="logo-text">AIStatsEspacial</div>
+                </div>
+                
+                <div class="university-info">
+                    <div class="university-badge">INFORMATICA</div>
+                    <div class="university-badge">ESTADISTICA</div>
+                </div>
+
                 <div class="nav-links">
                     <a href="#home">Inicio</a>
                     <a href="#features">Tecnologías</a>
@@ -511,8 +584,13 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
+                <div class="university-header">
+                    <div class="university-title">UNIVERSIDAD NACIONAL DEL ALTIPLANO - PUNO</div>
+                    <div class="university-subtitle">FACULTAD DE INGENIERÍA ESTADÍSTICA E INFORMÁTICA</div>
+                </div>
+
                 <div class="hero-badge">
-                    <i class="fas fa-rocket"></i> Proyecto de Vanguardia - Décimo Semestre
+                    <i class="fas fa-graduation-cap"></i> Proyecto Académico - Décimo Semestre
                 </div>
                 
                 <h1 class="hero-title">
@@ -546,6 +624,13 @@
                             <div>
                                 <div style="color: var(--text-gray); font-size: 0.9rem;">Curso</div>
                                 <div style="font-weight: 600;">Estadística Espacial</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-university"></i>
+                            <div>
+                                <div style="color: var(--text-gray); font-size: 0.9rem;">Universidad</div>
+                                <div style="font-weight: 600;">U.N.A. - Puno</div>
                             </div>
                         </div>
                     </div>
@@ -681,8 +766,9 @@
                 <div class="footer-section">
                     <h3>Estadística Espacial IA</h3>
                     <p style="color: var(--text-gray); margin-top: 20px;">
-                        Proyecto académico de vanguardia que combina inteligencia artificial 
-                        con análisis geoespacial para la solución de problemas complejos en el décimo semestre.
+                        Proyecto académico de vanguardia - Universidad Nacional del Altiplano Puno<br>
+                        Facultad de Ingeniería Estadística e Informática<br>
+                        Décimo Semestre - 2024
                     </p>
                 </div>
                 
@@ -700,7 +786,7 @@
                     <h3>Contacto</h3>
                     <div class="footer-links">
                         <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">GitHub Repository</a>
-                        <a href="#">uriel.rojas@edu.pe</a>
+                        <a href="#">U.N.A. - Puno</a>
                         <a href="#">Décimo Semestre</a>
                         <a href="#">2024</a>
                     </div>
@@ -708,8 +794,8 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 Uriel Rojas Churquipa Quispe. Proyecto de Estadística Espacial - Décimo Semestre.</p>
-                <p>Todos los derechos reservados.</p>
+                <p>&copy; 2024 Uriel Rojas Churquipa Quispe - Universidad Nacional del Altiplano Puno</p>
+                <p>Proyecto de Estadística Espacial - Décimo Semestre - Todos los derechos reservados</p>
             </div>
         </div>
     </footer>
@@ -757,10 +843,10 @@
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
                 navbar.style.background = "rgba(15, 20, 34, 0.98)";
-                navbar.style.padding = "15px 0";
+                navbar.style.padding = "10px 0";
             } else {
                 navbar.style.background = "rgba(15, 20, 34, 0.95)";
-                navbar.style.padding = "20px 0";
+                navbar.style.padding = "15px 0";
             }
         });
 
