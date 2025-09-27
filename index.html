@@ -8,15 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #10b981;
-            --primary-dark: #059669;
-            --secondary: #3b82f6;
-            --accent: #f59e0b;
-            --dark: #111827;
-            --darker: #0a0f1a;
-            --light: #f9fafb;
-            --gradient: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-            --gradient-2: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            /* Colores EXACTOS de AIvent Demo 3 */
+            --primary: #6C4EF4;
+            --primary-dark: #5A3FEF;
+            --primary-light: #8B7AFF;
+            --secondary: #00D2A8;
+            --accent: #FF6B8B;
+            --dark: #0F1422;
+            --darker: #0A0F1A;
+            --dark-light: #1A2238;
+            --light: #FFFFFF;
+            --text-light: #E2E8F0;
+            --text-gray: #94A3B8;
+            
+            /* Gradientes exactos de AIvent */
+            --gradient-primary: linear-gradient(135deg, #6C4EF4 0%, #8B7AFF 100%);
+            --gradient-secondary: linear-gradient(135deg, #00D2A8 0%, #00F5A8 100%);
+            --gradient-accent: linear-gradient(135deg, #FF6B8B 0%, #FF8E6B 100%);
+            --gradient-hero: linear-gradient(135deg, #0F1422 0%, #1A2238 50%, #0F1422 100%);
         }
 
         * {
@@ -32,7 +41,7 @@
 
         body {
             background: var(--darker);
-            color: var(--light);
+            color: var(--text-light);
             line-height: 1.7;
             overflow-x: hidden;
             font-weight: 400;
@@ -44,40 +53,68 @@
             padding: 0 20px;
         }
 
-        /* Particle Background */
-        .particles {
+        /* Background Animado tipo AIvent */
+        .animated-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: var(--darker);
+            z-index: -2;
+            background: var(--gradient-hero);
+            overflow: hidden;
         }
 
-        .particle {
+        .bg-shape {
             position: absolute;
-            background: var(--primary);
             border-radius: 50%;
             opacity: 0.1;
-            animation: float 6s infinite ease-in-out;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            top: 50%;
+            right: 10%;
+            animation-delay: 4s;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
         }
 
-        /* Navigation */
+        /* Navigation - Estilo AIvent */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(17, 24, 39, 0.95);
+            background: rgba(15, 20, 34, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
         }
 
         .nav-content {
@@ -89,7 +126,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            background: var(--gradient);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -101,15 +138,16 @@
         }
 
         .nav-links a {
-            color: var(--light);
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             position: relative;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-light);
         }
 
         .nav-links a::after {
@@ -119,15 +157,15 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* Hero Section */
+        /* Hero Section - Estilo AIvent */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -140,33 +178,39 @@
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .badge {
-            display: inline-block;
-            background: var(--gradient);
-            color: white;
-            padding: 10px 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(108, 78, 244, 0.15);
+            color: var(--primary-light);
+            padding: 12px 25px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 30px;
+            border: 1px solid rgba(108, 78, 244, 0.3);
+            backdrop-filter: blur(10px);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(108, 78, 244, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(108, 78, 244, 0); }
         }
 
         h1 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             line-height: 1.1;
             animation: slideUp 1s ease-out;
         }
@@ -183,17 +227,19 @@
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
-            color: #d1d5db;
+            font-size: 1.3rem;
+            color: var(--text-gray);
             margin-bottom: 40px;
-            font-weight: 300;
+            font-weight: 400;
+            line-height: 1.6;
             animation: slideUp 1s ease-out 0.2s both;
         }
 
-        .student-highlight {
-            background: rgba(255, 255, 255, 0.05);
+        /* Student Info Card - Estilo AIvent */
+        .student-card {
+            background: rgba(26, 34, 56, 0.6);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 30px;
             margin: 40px auto;
@@ -214,26 +260,47 @@
             gap: 15px;
             padding: 15px;
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            transition: transform 0.3s;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .student-item:hover {
-            transform: translateX(10px);
+            transform: translateX(8px);
+            background: rgba(108, 78, 244, 0.1);
+            border-color: rgba(108, 78, 244, 0.3);
         }
 
         .student-item i {
             color: var(--primary);
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 10px;
+            font-size: 1.3rem;
+            width: 45px;
+            height: 45px;
+            background: rgba(108, 78, 244, 0.1);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        .student-info-text {
+            flex: 1;
+        }
+
+        .student-label {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .student-value {
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Buttons - Estilo AIvent */
         .btn-group {
             display: flex;
             gap: 20px;
@@ -245,15 +312,15 @@
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 18px 40px;
-            border-radius: 15px;
+            gap: 12px;
+            padding: 16px 35px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             position: relative;
             overflow: hidden;
         }
@@ -266,7 +333,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            transition: left 0.6s;
         }
 
         .btn:hover::before {
@@ -274,16 +341,21 @@
         }
 
         .btn-primary {
-            background: var(--gradient);
+            background: var(--gradient-primary);
             color: white;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 10px 30px rgba(108, 78, 244, 0.3);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-light);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .btn:hover {
@@ -291,18 +363,18 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        /* Features Section */
+        /* Features Section - Estilo AIvent */
         .features {
-            padding: 100px 0;
+            padding: 120px 0;
             position: relative;
         }
 
         .section-title {
             text-align: center;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 800;
             margin-bottom: 60px;
-            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -311,15 +383,15 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(26, 34, 56, 0.6);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 50px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 35px;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -329,84 +401,85 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s;
+            background: linear-gradient(90deg, transparent, rgba(108, 78, 244, 0.1), transparent);
+            transition: left 0.6s;
         }
 
         .feature-card:hover::before {
-            opacity: 0.05;
+            left: 100%;
         }
 
         .feature-card:hover {
-            transform: translateY(-15px);
-            border-color: rgba(16, 185, 129, 0.3);
+            transform: translateY(-10px);
+            border-color: rgba(108, 78, 244, 0.3);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
 
         .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 20px;
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            animation: bounce 3s infinite;
         }
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
         }
 
         .feature-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
+            margin-bottom: 15px;
+            color: var(--text-light);
         }
 
         .feature-description {
-            color: #d1d5db;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         /* Stats Section */
         .stats {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
+            background: rgba(15, 20, 34, 0.8);
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
         .stat-card {
             text-align: center;
             padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(26, 34, 56, 0.6);
             border-radius: 20px;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .stat-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            background: rgba(26, 34, 56, 0.8);
         }
 
         .stat-number {
-            font-size: 4rem;
-            font-weight: 900;
-            background: var(--gradient);
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -415,53 +488,16 @@
         }
 
         .stat-label {
-            color: #9ca3af;
-            font-size: 1.2rem;
+            color: var(--text-gray);
+            font-size: 1.1rem;
             font-weight: 500;
-        }
-
-        /* Demo Section */
-        .demo {
-            padding: 100px 0;
-        }
-
-        .demo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .demo-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .demo-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .demo-image {
-            height: 200px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .demo-content {
-            padding: 30px;
         }
 
         /* Footer */
         footer {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(10, 15, 26, 0.95);
             padding: 80px 0 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .footer-content {
@@ -472,39 +508,42 @@
         }
 
         .footer-section h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 20px;
-            background: var(--gradient);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 700;
         }
 
         .footer-links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .footer-links a {
-            color: #d1d5db;
+            color: var(--text-gray);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 0.95rem;
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--primary-light);
             transform: translateX(5px);
         }
 
         .copyright {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-gray);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
@@ -514,7 +553,7 @@
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
             }
 
             .nav-links {
@@ -535,22 +574,30 @@
             .features-grid {
                 grid-template-columns: 1fr;
             }
+
+            .student-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Particle Background -->
-    <div class="particles" id="particles"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">EstadísticaEspacial</div>
+                <div class="logo">AIStatsEspacial</div>
                 <div class="nav-links">
                     <a href="#home">Inicio</a>
                     <a href="#features">Tecnologías</a>
-                    <a href="#stats">Proyectos</a>
+                    <a href="#stats">Estadísticas</a>
                     <a href="#demo">Demo</a>
                     <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">GitHub</a>
                 </div>
@@ -563,37 +610,37 @@
         <div class="container">
             <div class="hero-content">
                 <div class="badge">
-                    <i class="fas fa-rocket"></i> Proyecto de Vanguardia
+                    <i class="fas fa-graduation-cap"></i> Proyecto Académico - Décimo Semestre
                 </div>
                 
-                <h1>Inteligencia Artificial en Estadística Espacial</h1>
+                <h1>Estadística Espacial con Inteligencia Artificial</h1>
                 
                 <p class="hero-subtitle">
-                    Revolucionando el análisis geoespacial con machine learning, deep learning 
-                    y algoritmos de última generación para el descubrimiento de patrones ocultos
+                    Integrando machine learning, análisis geoespacial y visualización de datos 
+                    para resolver problemas complejos del mundo real mediante técnicas avanzadas de estadística espacial
                 </p>
 
-                <div class="student-highlight">
+                <div class="student-card">
                     <div class="student-grid">
                         <div class="student-item">
                             <i class="fas fa-user-graduate"></i>
-                            <div>
-                                <div style="color: #9ca3af; font-size: 0.9rem;">Investigador</div>
-                                <div style="font-weight: 600;">Uriel Rojas Churquipa Quispe</div>
+                            <div class="student-info-text">
+                                <div class="student-label">Investigador Principal</div>
+                                <div class="student-value">Uriel Rojas Churquipa Quispe</div>
                             </div>
                         </div>
                         <div class="student-item">
                             <i class="fas fa-calendar-alt"></i>
-                            <div>
-                                <div style="color: #9ca3af; font-size: 0.9rem;">Semestre Académico</div>
-                                <div style="font-weight: 600;">Décimo Semestre</div>
+                            <div class="student-info-text">
+                                <div class="student-label">Semestre Académico</div>
+                                <div class="student-value">Décimo Semestre</div>
                             </div>
                         </div>
                         <div class="student-item">
                             <i class="fas fa-book"></i>
-                            <div>
-                                <div style="color: #9ca3af; font-size: 0.9rem;">Especialización</div>
-                                <div style="font-weight: 600;">Estadística Espacial Avanzada</div>
+                            <div class="student-info-text">
+                                <div class="student-label">Especialización</div>
+                                <div class="student-value">Estadística Espacial Avanzada</div>
                             </div>
                         </div>
                     </div>
@@ -601,10 +648,10 @@
 
                 <div class="btn-group">
                     <a href="https://github.com/18uriel/Estadistica-Espacial" class="btn btn-primary" target="_blank">
-                        <i class="fab fa-github"></i> Explorar Código
+                        <i class="fab fa-github"></i> Ver Repositorio
                     </a>
-                    <a href="#demo" class="btn btn-secondary">
-                        <i class="fas fa-play"></i> Ver Demostración
+                    <a href="#features" class="btn btn-secondary">
+                        <i class="fas fa-play-circle"></i> Ver Proyectos
                     </a>
                 </div>
             </div>
@@ -623,19 +670,19 @@
                     </div>
                     <h3 class="feature-title">Machine Learning Espacial</h3>
                     <p class="feature-description">
-                        Algoritmos de clustering espacial, redes neuronales convolucionales 
-                        para análisis de imágenes satelitales, y modelos predictivos geo-referenciados.
+                        Algoritmos de clustering espacial, redes neuronales para análisis de imágenes satelitales, 
+                        y modelos predictivos geo-referenciados usando Python y TensorFlow.
                     </p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-satellite"></i>
+                        <i class="fas fa-satellite-dish"></i>
                     </div>
-                    <h3 class="feature-title">Análisis Satelital</h3>
+                    <h3 class="feature-title">Análisis Satelital Avanzado</h3>
                     <p class="feature-description">
-                        Procesamiento de datos LANDSAT, Sentinel y GPS de alta precisión 
-                        para monitoreo ambiental y análisis de cambios temporales.
+                        Procesamiento de datos LANDSAT, Sentinel y GPS de alta precisión para monitoreo ambiental, 
+                        análisis de cambios temporales y detección de patrones espaciales.
                     </p>
                 </div>
 
@@ -643,10 +690,10 @@
                     <div class="feature-icon">
                         <i class="fas fa-chart-network"></i>
                     </div>
-                    <h3 class="feature-title">Redes Neuronales</h3>
+                    <h3 class="feature-title">Redes Neuronales Graph</h3>
                     <p class="feature-description">
-                        Implementación de GNNs (Graph Neural Networks) para análisis de 
-                        redes espaciales y detección de comunidades geográficas.
+                        Implementación de GNNs para análisis de redes espaciales, detección de comunidades 
+                        geográficas y modelado de relaciones espaciales complejas.
                     </p>
                 </div>
             </div>
@@ -656,7 +703,7 @@
     <!-- Stats Section -->
     <section class="stats" id="stats">
         <div class="container">
-            <h2 class="section-title">Impacto del Proyecto</h2>
+            <h2 class="section-title">Métricas del Proyecto</h2>
             
             <div class="stats-grid">
                 <div class="stat-card">
@@ -676,46 +723,7 @@
                 
                 <div class="stat-card">
                     <span class="stat-number">100%</span>
-                    <div class="stat-label">Open Source</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section class="demo" id="demo">
-        <div class="container">
-            <h2 class="section-title">Demostraciones Visuales</h2>
-            
-            <div class="demo-grid">
-                <div class="demo-card">
-                    <div class="demo-image">
-                        <i class="fas fa-map"></i>
-                    </div>
-                    <div class="demo-content">
-                        <h3>Mapas de Calor Interactivos</h3>
-                        <p>Visualización en tiempo real de patrones espaciales usando D3.js y WebGL.</p>
-                    </div>
-                </div>
-                
-                <div class="demo-card">
-                    <div class="demo-image">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <div class="demo-content">
-                        <h3>Análisis de Redes</h3>
-                        <p>Modelado de conectividad espacial y análisis de flujos geográficos.</p>
-                    </div>
-                </div>
-                
-                <div class="demo-card">
-                    <div class="demo-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="demo-content">
-                        <h3>Predictor IA</h3>
-                        <p>Modelos predictivos para tendencias espaciales usando series temporales.</p>
-                    </div>
+                    <div class="stat-label">Código Abierto</div>
                 </div>
             </div>
         </div>
@@ -726,20 +734,20 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Estadística Espacial</h3>
-                    <p style="color: #d1d5db; margin-top: 20px;">
+                    <h3>Estadística Espacial IA</h3>
+                    <p style="color: var(--text-gray); margin-top: 15px; line-height: 1.6;">
                         Proyecto académico de vanguardia que combina inteligencia artificial 
-                        con análisis geoespacial para la solución de problemas complejos.
+                        con análisis geoespacial para la solución de problemas complejos en décimo semestre.
                     </p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Enlaces</h3>
+                    <h3>Navegación</h3>
                     <div class="footer-links">
                         <a href="#home"><i class="fas fa-chevron-right"></i> Inicio</a>
                         <a href="#features"><i class="fas fa-chevron-right"></i> Tecnologías</a>
-                        <a href="#stats"><i class="fas fa-chevron-right"></i> Proyectos</a>
-                        <a href="#demo"><i class="fas fa-chevron-right"></i> Demo</a>
+                        <a href="#stats"><i class="fas fa-chevron-right"></i> Estadísticas</a>
+                        <a href="#demo"><i class="fas fa-chevron-right"></i> Demostraciones</a>
                     </div>
                 </div>
                 
@@ -747,9 +755,9 @@
                     <h3>Contacto</h3>
                     <div class="footer-links">
                         <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
+                            <i class="fab fa-github"></i> GitHub Repository
                         </a>
-                        <a href="#"><i class="fas fa-envelope"></i> uriel@universidad.edu</a>
+                        <a href="#"><i class="fas fa-envelope"></i> uriel.rojas@edu.pe</a>
                         <a href="#"><i class="fas fa-university"></i> Décimo Semestre</a>
                         <a href="#"><i class="fas fa-calendar"></i> 2024</a>
                     </div>
@@ -757,42 +765,29 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 Uriel Rojas Churquipa Quispe. Proyecto de Estadística Espacial.</p>
-                <p>Todos los derechos reservados - Décimo Semestre</p>
+                <p>&copy; 2024 Uriel Rojas Churquipa Quispe. Proyecto de Estadística Espacial - Décimo Semestre.</p>
+                <p>Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Create particles
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 5 + 2;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const delay = Math.random() * 6;
-                const duration = Math.random() * 4 + 4;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.background = i % 2 === 0 ? '#10b981' : '#3b82f6';
-                
-                particles.appendChild(particle);
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 20, 34, 0.98)';
+                navbar.style.padding = '15px 0';
+                navbar.style.backdropFilter = 'blur(25px)';
+            } else {
+                navbar.style.background = 'rgba(15, 20, 34, 0.95)';
+                navbar.style.padding = '20px 0';
+                navbar.style.backdropFilter = 'blur(20px)';
             }
-        }
+        });
 
         // Scroll animations
-        function initAnimations() {
+        document.addEventListener('DOMContentLoaded', function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -802,31 +797,13 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.feature-card, .stat-card, .demo-card').forEach(el => {
+            // Animate feature cards
+            document.querySelectorAll('.feature-card, .stat-card').forEach((el, index) => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease';
+                el.style.transition = 'all 0.6s ease ' + (index * 0.1) + 's';
                 observer.observe(el);
             });
-        }
-
-        // Navbar scroll effect
-        function handleScroll() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(17, 24, 39, 0.98)';
-                navbar.style.padding = '15px 0';
-            } else {
-                navbar.style.background = 'rgba(17, 24, 39, 0.95)';
-                navbar.style.padding = '20px 0';
-            }
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            initAnimations();
-            window.addEventListener('scroll', handleScroll);
         });
     </script>
 </body>
