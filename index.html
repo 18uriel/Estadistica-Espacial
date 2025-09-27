@@ -1,12 +1,359 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi página en GitHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadística Espacial - Repositorio</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Secciones */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #3498db;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* Acerca de */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Características */
+        .features {
+            background-color: #ecf0f1;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        /* Repositorio */
+        .repo-info {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>¡Hola mundo desde GitHub Pages!</h1>
-  <p>Esta es mi primera página web publicada con GitHub.</p>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Estadística Espacial</h1>
+                <p class="subtitle">Análisis de datos geoespaciales y técnicas estadísticas avanzadas</p>
+                <a href="https://github.com/18uriel/Estadistica-Espacial" class="btn" target="_blank">Ver en GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Acerca de -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Acerca del Proyecto</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Este repositorio está dedicado al estudio y aplicación de técnicas de estadística espacial, un campo que combina métodos estadísticos con datos geoespaciales para analizar patrones, tendencias y relaciones en información con componente geográfico.</p>
+                    <p>La estadística espacial es fundamental en disciplinas como la epidemiología, ecología, economía regional y ciencias ambientales, donde la localización geográfica de los datos es crucial para su interpretación.</p>
+                    <p>En este repositorio encontrarás implementaciones de algoritmos, análisis de casos de estudio y documentación sobre métodos estadísticos aplicados a datos espaciales.</p>
+                </div>
+                <div class="about-image">
+                    <!-- Imagen representativa de estadística espacial -->
+                    <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="300" height="300" fill="#3498db" opacity="0.1" rx="10"/>
+                        <circle cx="150" cy="150" r="120" fill="none" stroke="#3498db" stroke-width="2"/>
+                        <circle cx="100" cy="120" r="8" fill="#e74c3c"/>
+                        <circle cx="180" cy="100" r="8" fill="#e74c3c"/>
+                        <circle cx="130" cy="180" r="8" fill="#e74c3c"/>
+                        <circle cx="200" cy="150" r="8" fill="#e74c3c"/>
+                        <circle cx="160" cy="200" r="8" fill="#e74c3c"/>
+                        <circle cx="220" cy="190" r="8" fill="#e74c3c"/>
+                        <circle cx="90" cy="160" r="8" fill="#e74c3c"/>
+                        <path d="M100,120 L130,180 L160,200 L200,150 L220,190 L180,100" fill="none" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="150" y="270" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="14">Análisis de patrones espaciales</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Características -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Características</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Análisis Exploratorio</h3>
+                    <p>Técnicas para visualizar y explorar datos espaciales, identificando patrones y outliers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">Autocorrelación Espacial</h3>
+                    <p>Medidas como el Índice de Moran para evaluar la dependencia espacial entre observaciones.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Modelos Espaciales</h3>
+                    <p>Implementación de modelos estadísticos que incorporan la estructura espacial de los datos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Interpolación</h3>
+                    <p>Métodos como Kriging para estimar valores en ubicaciones no muestreadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Repositorio -->
+    <section id="repository">
+        <div class="container">
+            <h2 class="section-title">Estado del Repositorio</h2>
+            <div class="repo-info">
+                <p>Este repositorio está en desarrollo activo. Actualmente contiene la estructura básica y archivos iniciales.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Commits</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Rama</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">HTML</div>
+                        <div class="stat-label">Lenguaje principal</div>
+                    </div>
+                </div>
+                <a href="https://github.com/18uriel/Estadistica-Espacial" class="btn" style="margin-top: 30px;" target="_blank">Contribuir al Proyecto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2023 Estadística Espacial. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">GitHub</a>
+                    <a href="#about">Acerca de</a>
+                    <a href="#repository">Repositorio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
