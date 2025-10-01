@@ -332,54 +332,21 @@
             box-shadow: 0 10px 30px rgba(255, 107, 139, 0.3);
         }
 
+        .btn-success {
+            background: var(--gradient-secondary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 210, 168, 0.3);
+        }
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        /* PDF Section */
-        .pdf-section {
+        /* Trabajos Académicos Section */
+        .trabajos-section {
             padding: 100px 0;
             background: rgba(15, 20, 34, 0.8);
-        }
-
-        .pdf-container {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .pdf-preview {
-            background: var(--gradient-card);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .pdf-icon {
-            font-size: 4rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .pdf-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-
-        .pdf-description {
-            color: var(--text-gray);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 120px 0;
-            position: relative;
         }
 
         .section-title {
@@ -391,6 +358,126 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filtro-btn.active, .filtro-btn:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .trabajos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .trabajo-card {
+            background: var(--gradient-card);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trabajo-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(108, 78, 244, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .trabajo-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-pdf {
+            background: rgba(244, 67, 54, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+
+        .badge-word {
+            background: rgba(33, 150, 243, 0.2);
+            color: #4fc3f7;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+
+        .badge-excel {
+            background: rgba(76, 175, 80, 0.2);
+            color: #81c784;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .badge-presentacion {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ffb74d;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .trabajo-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .trabajo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .trabajo-description {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .trabajo-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .trabajo-date {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            position: relative;
         }
 
         .features-grid {
@@ -588,12 +675,17 @@
                 flex-direction: column;
             }
 
-            .features-grid {
+            .features-grid, .trabajos-grid, .demo-grid {
                 grid-template-columns: 1fr;
             }
 
             .info-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .filtros {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -618,7 +710,7 @@
 
                 <div class="nav-links">
                     <a href="#home">Inicio</a>
-                    <a href="#pdf">Documentación</a>
+                    <a href="#trabajos">Mis Trabajos</a>
                     <a href="#features">Tecnologías</a>
                     <a href="#demo">Demo</a>
                     <a href="#stats">Estadísticas</a>
@@ -688,8 +780,8 @@
                     <a href="https://github.com/18uriel/Estadistica-Espacial" class="btn btn-primary" target="_blank">
                         <i class="fab fa-github"></i> Explorar Repositorio
                     </a>
-                    <a href="#pdf" class="btn btn-accent">
-                        <i class="fas fa-file-pdf"></i> Ver Documentación
+                    <a href="#trabajos" class="btn btn-accent">
+                        <i class="fas fa-folder-open"></i> Ver Mis Trabajos
                     </a>
                     <a href="#demo" class="btn btn-secondary">
                         <i class="fas fa-play"></i> Ver Demostraciones
@@ -699,36 +791,130 @@
         </div>
     </section>
 
-    <!-- PDF Section -->
-    <section class="pdf-section" id="pdf">
+    <!-- Trabajos Académicos Section -->
+    <section class="trabajos-section" id="trabajos">
         <div class="container">
-            <div class="pdf-container">
-                <h2 class="section-title">Documentación del Proyecto</h2>
-                
-                <div class="pdf-preview">
-                    <div class="pdf-icon">
+            <h2 class="section-title">Mis Trabajos Académicos</h2>
+            
+            <div class="filtros">
+                <button class="filtro-btn active" data-filter="todos">Todos</button>
+                <button class="filtro-btn" data-filter="pdf">PDF</button>
+                <button class="filtro-btn" data-filter="word">Word</button>
+                <button class="filtro-btn" data-filter="excel">Excel</button>
+                <button class="filtro-btn" data-filter="presentacion">Presentaciones</button>
+            </div>
+            
+            <div class="trabajos-grid">
+                <!-- Trabajo 1 - PDF -->
+                <div class="trabajo-card" data-category="pdf">
+                    <div class="trabajo-badge badge-pdf">PDF</div>
+                    <div class="trabajo-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
-                    <h3 class="pdf-title">Proyecto de Estadística Espacial con IA</h3>
-                    <p class="pdf-description">
-                        Documentación completa del proyecto que incluye metodología, 
-                        implementación de algoritmos, análisis de resultados y conclusiones.
+                    <h3 class="trabajo-title">Research Statement</h3>
+                    <p class="trabajo-description">
+                        Documento de investigación sobre aplicaciones de IA en estadística espacial.
+                        Incluye metodología, análisis y conclusiones del proyecto.
                     </p>
-                    
-                    <div class="btn-group">
-                        <!-- Ambos botones ahora apuntan al mismo archivo PDF -->
-                        <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" class="btn btn-accent" target="_blank">
-                            <i class="fas fa-download"></i> Descargar PDF
-                        </a>
-                        <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" class="btn btn-secondary" target="_blank">
-                            <i class="fas fa-eye"></i> Ver en Navegador
-                        </a>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" class="btn btn-accent" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">Nov 2024</div>
                     </div>
                 </div>
-                
-                <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 20px;">
-                    <i class="fas fa-info-circle"></i> El documento está en formato PDF. Asegúrate de tener un lector de PDF instalado.
-                </p>
+
+                <!-- Trabajo 2 - Word (Ejemplo) -->
+                <div class="trabajo-card" data-category="word">
+                    <div class="trabajo-badge badge-word">WORD</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3 class="trabajo-title">Análisis de Datos Espaciales</h3>
+                    <p class="trabajo-description">
+                        Reporte completo del análisis de datos geoespaciales usando técnicas
+                        de machine learning y estadística avanzada.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-success" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="#" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">Oct 2024</div>
+                    </div>
+                </div>
+
+                <!-- Trabajo 3 - Excel (Ejemplo) -->
+                <div class="trabajo-card" data-category="excel">
+                    <div class="trabajo-badge badge-excel">EXCEL</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3 class="trabajo-title">Base de Datos Geoespacial</h3>
+                    <p class="trabajo-description">
+                        Dataset completo con coordenadas, variables ambientales y análisis
+                        estadísticos realizados en el proyecto.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-success" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="#" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">Sep 2024</div>
+                    </div>
+                </div>
+
+                <!-- Trabajo 4 - Presentación (Ejemplo) -->
+                <div class="trabajo-card" data-category="presentacion">
+                    <div class="trabajo-badge badge-presentacion">PPT</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3 class="trabajo-title">Presentación del Proyecto</h3>
+                    <p class="trabajo-description">
+                        Presentación ejecutiva del proyecto de estadística espacial con IA.
+                        Incluye gráficos, resultados y demostraciones visuales.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-success" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="#" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">Dic 2024</div>
+                    </div>
+                </div>
+
+                <!-- Espacio para futuros trabajos -->
+                <div class="trabajo-card" style="border: 2px dashed rgba(255,255,255,0.3); background: transparent;">
+                    <div class="trabajo-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3 class="trabajo-title">Próximos Trabajos</h3>
+                    <p class="trabajo-description">
+                        Espacio reservado para futuros trabajos académicos, investigaciones
+                        y proyectos que se irán añadiendo progresivamente.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="trabajo-date">Próximamente</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -861,7 +1047,7 @@
                     <h3>Enlaces Rápidos</h3>
                     <div class="footer-links">
                         <a href="#home">Inicio</a>
-                        <a href="#pdf">Documentación</a>
+                        <a href="#trabajos">Mis Trabajos</a>
                         <a href="#features">Tecnologías</a>
                         <a href="#demo">Demostraciones</a>
                         <a href="#stats">Estadísticas</a>
@@ -871,7 +1057,7 @@
                 <div class="footer-section">
                     <h3>Recursos</h3>
                     <div class="footer-links">
-                        <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" target="_blank">Documentación PDF</a>
+                        <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" target="_blank">Research Statement</a>
                         <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">GitHub Repository</a>
                         <a href="#">U.N.A. - Puno</a>
                         <a href="#">Décimo Semestre</a>
@@ -936,6 +1122,39 @@
             }
         });
 
+        // Filtros de trabajos
+        document.addEventListener('DOMContentLoaded', function() {
+            const filtroBtns = document.querySelectorAll('.filtro-btn');
+            const trabajoCards = document.querySelectorAll('.trabajo-card');
+
+            filtroBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    filtroBtns.forEach(b => b.classList.remove('active'));
+                    // Agregar clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    trabajoCards.forEach(card => {
+                        if (filter === 'todos' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -946,7 +1165,7 @@
             });
         });
 
-        document.querySelectorAll('.feature-card, .demo-card, .stat-card, .pdf-preview').forEach(el => {
+        document.querySelectorAll('.feature-card, .demo-card, .stat-card, .trabajo-card').forEach(el => {
             el.style.opacity = 0;
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
