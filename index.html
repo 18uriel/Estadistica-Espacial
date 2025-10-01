@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colores exactos de AIvent */
+            /* Nueva paleta de colores inspirada en AIvent */
             --primary: #6C4EF4;
             --primary-dark: #5A3FEF;
             --primary-light: #8B7AFF;
@@ -21,10 +21,12 @@
             --text-light: #E2E8F0;
             --text-gray: #94A3B8;
             
-            /* Gradientes exactos */
+            /* Gradientes mejorados */
             --gradient-primary: linear-gradient(135deg, #6C4EF4 0%, #8B7AFF 100%);
             --gradient-secondary: linear-gradient(135deg, #00D2A8 0%, #00F5A8 100%);
             --gradient-accent: linear-gradient(135deg, #FF6B8B 0%, #FF8E6B 100%);
+            --gradient-hero: linear-gradient(135deg, #6C4EF4 0%, #00D2A8 50%, #FF6B8B 100%);
+            --gradient-card: linear-gradient(135deg, rgba(108, 78, 244, 0.1) 0%, rgba(0, 210, 168, 0.1) 100%);
         }
 
         * {
@@ -199,7 +201,7 @@
         .hero-title {
             font-size: 4rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #FFFFFF 0%, var(--primary-light) 100%);
+            background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -230,7 +232,7 @@
 
         /* Student Info */
         .student-info {
-            background: rgba(26, 34, 56, 0.6);
+            background: var(--gradient-card);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
@@ -340,7 +342,7 @@
             font-size: 3.2rem;
             font-weight: 800;
             margin-bottom: 60px;
-            background: linear-gradient(135deg, #FFFFFF 0%, var(--primary-light) 100%);
+            background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -353,7 +355,7 @@
         }
 
         .feature-card {
-            background: rgba(26, 34, 56, 0.6);
+            background: var(--gradient-card);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
@@ -414,7 +416,7 @@
         }
 
         .demo-card {
-            background: rgba(26, 34, 56, 0.6);
+            background: var(--gradient-card);
             border-radius: 20px;
             overflow: hidden;
             transition: transform 0.3s ease;
@@ -452,7 +454,7 @@
         .stat-card {
             text-align: center;
             padding: 40px 30px;
-            background: rgba(26, 34, 56, 0.6);
+            background: var(--gradient-card);
             border-radius: 20px;
             transition: transform 0.3s ease;
         }
@@ -464,7 +466,7 @@
         .stat-number {
             font-size: 4rem;
             font-weight: 900;
-            background: var(--gradient-primary);
+            background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -494,7 +496,7 @@
         .footer-section h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            background: var(--gradient-primary);
+            background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
