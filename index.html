@@ -326,9 +326,54 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
+        .btn-accent {
+            background: var(--gradient-accent);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 139, 0.3);
+        }
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* PDF Section */
+        .pdf-section {
+            padding: 100px 0;
+            background: rgba(15, 20, 34, 0.8);
+        }
+
+        .pdf-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pdf-preview {
+            background: var(--gradient-card);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pdf-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .pdf-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .pdf-description {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
         }
 
         /* Features Section */
@@ -573,6 +618,7 @@
 
                 <div class="nav-links">
                     <a href="#home">Inicio</a>
+                    <a href="#pdf">Documentación</a>
                     <a href="#features">Tecnologías</a>
                     <a href="#demo">Demo</a>
                     <a href="#stats">Estadísticas</a>
@@ -642,10 +688,47 @@
                     <a href="https://github.com/18uriel/Estadistica-Espacial" class="btn btn-primary" target="_blank">
                         <i class="fab fa-github"></i> Explorar Repositorio
                     </a>
+                    <a href="#pdf" class="btn btn-accent">
+                        <i class="fas fa-file-pdf"></i> Ver Documentación
+                    </a>
                     <a href="#demo" class="btn btn-secondary">
                         <i class="fas fa-play"></i> Ver Demostraciones
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Section -->
+    <section class="pdf-section" id="pdf">
+        <div class="container">
+            <div class="pdf-container">
+                <h2 class="section-title">Documentación del Proyecto</h2>
+                
+                <div class="pdf-preview">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="pdf-title">Proyecto de Estadística Espacial con IA</h3>
+                    <p class="pdf-description">
+                        Documentación completa del proyecto que incluye metodología, 
+                        implementación de algoritmos, análisis de resultados y conclusiones.
+                    </p>
+                    
+                    <div class="btn-group">
+                        <!-- Reemplaza "tu-documento.pdf" con el nombre real de tu archivo PDF -->
+                        <a href="documentacion-proyecto.pdf" class="btn btn-accent" target="_blank">
+                            <i class="fas fa-download"></i> Descargar PDF
+                        </a>
+                        <a href="documentacion-proyecto.pdf" class="btn btn-secondary" target="_blank">
+                            <i class="fas fa-eye"></i> Ver en Navegador
+                        </a>
+                    </div>
+                </div>
+                
+                <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 20px;">
+                    <i class="fas fa-info-circle"></i> El documento está en formato PDF. Asegúrate de tener un lector de PDF instalado.
+                </p>
             </div>
         </div>
     </section>
@@ -778,6 +861,7 @@
                     <h3>Enlaces Rápidos</h3>
                     <div class="footer-links">
                         <a href="#home">Inicio</a>
+                        <a href="#pdf">Documentación</a>
                         <a href="#features">Tecnologías</a>
                         <a href="#demo">Demostraciones</a>
                         <a href="#stats">Estadísticas</a>
@@ -785,12 +869,12 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Contacto</h3>
+                    <h3>Recursos</h3>
                     <div class="footer-links">
+                        <a href="documentacion-proyecto.pdf" target="_blank">Documentación PDF</a>
                         <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">GitHub Repository</a>
                         <a href="#">U.N.A. - Puno</a>
                         <a href="#">Décimo Semestre</a>
-                        <a href="#">2024</a>
                     </div>
                 </div>
             </div>
@@ -862,7 +946,7 @@
             });
         });
 
-        document.querySelectorAll('.feature-card, .demo-card, .stat-card').forEach(el => {
+        document.querySelectorAll('.feature-card, .demo-card, .stat-card, .pdf-preview').forEach(el => {
             el.style.opacity = 0;
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
