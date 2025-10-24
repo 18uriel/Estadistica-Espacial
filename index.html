@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colores vibrantes inspirados en AIvent */
             --primary: #6C4EF4;
             --primary-dark: #5A3FEF;
             --primary-light: #8B7AFF;
@@ -20,8 +19,6 @@
             --light: #FFFFFF;
             --text-light: #E2E8F0;
             --text-gray: #94A3B8;
-            
-            /* Gradientes modernos */
             --gradient-primary: linear-gradient(135deg, #6C4EF4 0%, #8B7AFF 100%);
             --gradient-secondary: linear-gradient(135deg, #00D2A8 0%, #00F5A8 100%);
             --gradient-accent: linear-gradient(135deg, #FF6B8B 0%, #FF8E6B 100%);
@@ -54,7 +51,6 @@
             padding: 0 20px;
         }
 
-        /* Background Particles */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -63,7 +59,6 @@
             z-index: -1;
         }
 
-        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -159,7 +154,6 @@
             width: 100%;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -230,7 +224,6 @@
             animation: slideUp 1s ease-out 0.2s both;
         }
 
-        /* Student Info */
         .student-info {
             background: var(--gradient-card);
             backdrop-filter: blur(20px);
@@ -288,7 +281,6 @@
             color: var(--text-gray);
         }
 
-        /* Buttons */
         .btn-group {
             display: flex;
             gap: 20px;
@@ -343,7 +335,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        /* Trabajos Académicos Section */
         .trabajos-section {
             padding: 100px 0;
             background: rgba(15, 20, 34, 0.8);
@@ -441,6 +432,24 @@
             border: 1px solid rgba(255, 152, 0, 0.3);
         }
 
+        .badge-r {
+            background: rgba(156, 39, 176, 0.2);
+            color: #ba68c8;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+
+        .badge-log {
+            background: rgba(96, 125, 139, 0.2);
+            color: #90a4ae;
+            border: 1px solid rgba(96, 125, 139, 0.3);
+        }
+
+        .badge-png {
+            background: rgba(0, 188, 212, 0.2);
+            color: #4dd0e1;
+            border: 1px solid rgba(0, 188, 212, 0.3);
+        }
+
         .trabajo-icon {
             font-size: 3rem;
             margin-bottom: 20px;
@@ -474,7 +483,6 @@
             font-size: 0.9rem;
         }
 
-        /* Features Section */
         .features {
             padding: 120px 0;
             position: relative;
@@ -535,7 +543,6 @@
             line-height: 1.8;
         }
 
-        /* Demo Section */
         .demo {
             padding: 100px 0;
             background: rgba(15, 20, 34, 0.8);
@@ -572,7 +579,6 @@
             padding: 30px;
         }
 
-        /* Stats Section */
         .stats {
             padding: 100px 0;
         }
@@ -611,7 +617,6 @@
             font-weight: 500;
         }
 
-        /* Footer */
         footer {
             background: rgba(10, 15, 26, 0.95);
             padding: 80px 0 30px;
@@ -653,7 +658,6 @@
             color: var(--text-gray);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.8rem;
@@ -691,10 +695,8 @@
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
     <div id="particles-js"></div>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
@@ -720,7 +722,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
@@ -791,7 +792,6 @@
         </div>
     </section>
 
-    <!-- Trabajos Académicos Section -->
     <section class="trabajos-section" id="trabajos">
         <div class="container">
             <h2 class="section-title">Mis Trabajos Académicos</h2>
@@ -799,13 +799,11 @@
             <div class="filtros">
                 <button class="filtro-btn active" data-filter="todos">Todos</button>
                 <button class="filtro-btn" data-filter="pdf">PDF</button>
-                <button class="filtro-btn" data-filter="word">Word</button>
-                <button class="filtro-btn" data-filter="excel">Excel</button>
-                <button class="filtro-btn" data-filter="presentacion">Presentaciones</button>
+                <button class="filtro-btn" data-filter="word">Word & R</button>
+                <button class="filtro-btn" data-filter="presentacion">Visualizaciones</button>
             </div>
             
             <div class="trabajos-grid">
-                <!-- Trabajo 1 - PDF -->
                 <div class="trabajo-card" data-category="pdf">
                     <div class="trabajo-badge badge-pdf">PDF</div>
                     <div class="trabajo-icon">
@@ -818,108 +816,227 @@
                     </p>
                     <div class="trabajo-meta">
                         <div class="btn-group">
-                            <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" class="btn btn-accent" target="_blank">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/Research%20Statement%20-%20URIEL%20ROJAS%20CHURQUIPA%20QUISPE.pdf" class="btn btn-accent" target="_blank">
                                 <i class="fas fa-eye"></i> Ver
                             </a>
-                            <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" class="btn btn-secondary" download>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/Research%20Statement%20-%20URIEL%20ROJAS%20CHURQUIPA%20QUISPE.pdf" class="btn btn-secondary" download>
                                 <i class="fas fa-download"></i> Descargar
                             </a>
                         </div>
-                        <div class="trabajo-date">Nov 2024</div>
+                        <div class="trabajo-date">3 semanas</div>
                     </div>
                 </div>
 
-                <!-- Trabajo 2 - Word (Ejemplo) -->
+                <div class="trabajo-card" data-category="pdf">
+                    <div class="trabajo-badge badge-pdf">PDF</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="trabajo-title">Resumen de Lectura - Artículos</h3>
+                    <p class="trabajo-description">
+                        Resumen comprensivo de artículos científicos sobre estadística espacial,
+                        métodos bayesianos y análisis geográficos avanzados.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/Resumen%20de%20Lectura%20-%20Art%C3%ADculos.pdf" class="btn btn-accent" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/Resumen%20de%20Lectura%20-%20Art%C3%ADculos.pdf" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">Ahora</div>
+                    </div>
+                </div>
+
+                <div class="trabajo-card" data-category="pdf">
+                    <div class="trabajo-badge badge-pdf">PDF</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="trabajo-title">Modelos Bayesianos Jerárquicos Espaciales</h3>
+                    <p class="trabajo-description">
+                        Análisis profundo de modelos bayesianos jerárquicos aplicados
+                        a datos espaciales con implementación práctica.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/Modelos_Bayesianos_Jerarquicos_Espaciales.pdf" class="btn btn-accent" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/Modelos_Bayesianos_Jerarquicos_Espaciales.pdf" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">4 días</div>
+                    </div>
+                </div>
+
+                <div class="trabajo-card" data-category="presentacion">
+                    <div class="trabajo-badge badge-png">PNG</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3 class="trabajo-title">Visualización - Modelos Bayesianos</h3>
+                    <p class="trabajo-description">
+                        Diagrama visual completo de la estructura y flujo de los modelos
+                        bayesianos jerárquicos espaciales implementados.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/Modelos_Bayesianos_Jerarquicos_Espaciales.png" class="btn btn-accent" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/Modelos_Bayesianos_Jerarquicos_Espaciales.png" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">4 días</div>
+                    </div>
+                </div>
+
+                <div class="trabajo-card" data-category="word">
+                    <div class="trabajo-badge badge-r">R</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="trabajo-title">MODELADO BAYESIANO.R</h3>
+                    <p class="trabajo-description">
+                        Script en R con implementación completa de modelos bayesianos
+                        para análisis espacial con librerías especializadas.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/MODELADO%20BAYESIANO.R" class="btn btn-success" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/MODELADO%20BAYESIANO.R" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">2 días</div>
+                    </div>
+                </div>
+
+                <div class="trabajo-card" data-category="word">
+                    <div class="trabajo-badge badge-r">R</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="trabajo-title">Bootstrap Uriel</h3>
+                    <p class="trabajo-description">
+                        Implementación de técnicas de bootstrap para validación de modelos
+                        espaciales y estimación de intervalos de confianza.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/boostrap_uriel.R" class="btn btn-success" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/boostrap_uriel.R" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">2 días</div>
+                    </div>
+                </div>
+
+                <div class="trabajo-card" data-category="pdf">
+                    <div class="trabajo-badge badge-pdf">PDF</div>
+                    <div class="trabajo-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="trabajo-title">Reporte Bootstrap</h3>
+                    <p class="trabajo-description">
+                        Documento con análisis y resultados de las técnicas de bootstrap
+                        aplicadas a modelos espaciales con visualizaciones.
+                    </p>
+                    <div class="trabajo-meta">
+                        <div class="btn-group">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/boostrap_uriel.pdf" class="btn btn-accent" target="_blank">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/boostrap_uriel.pdf" class="btn btn-secondary" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                        <div class="trabajo-date">2 días</div>
+                    </div>
+                </div>
+
                 <div class="trabajo-card" data-category="word">
                     <div class="trabajo-badge badge-word">WORD</div>
                     <div class="trabajo-icon">
                         <i class="fas fa-file-word"></i>
                     </div>
-                    <h3 class="trabajo-title">Análisis de Datos Espaciales</h3>
+                    <h3 class="trabajo-title">Procesos Gauseanos</h3>
                     <p class="trabajo-description">
-                        Reporte completo del análisis de datos geoespaciales usando técnicas
-                        de machine learning y estadística avanzada.
+                        Documento detallado sobre procesos gauseanos y su aplicación
+                        en kriging espacial y predicción geográfica.
                     </p>
                     <div class="trabajo-meta">
                         <div class="btn-group">
-                            <a href="#" class="btn btn-success" target="_blank">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/gauseano.docx" class="btn btn-success" target="_blank">
                                 <i class="fas fa-eye"></i> Ver
                             </a>
-                            <a href="#" class="btn btn-secondary" download>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/gauseano.docx" class="btn btn-secondary" download>
                                 <i class="fas fa-download"></i> Descargar
                             </a>
                         </div>
-                        <div class="trabajo-date">Oct 2024</div>
+                        <div class="trabajo-date">2 días</div>
                     </div>
                 </div>
 
-                <!-- Trabajo 3 - Excel (Ejemplo) -->
-                <div class="trabajo-card" data-category="excel">
-                    <div class="trabajo-badge badge-excel">EXCEL</div>
+                <div class="trabajo-card" data-category="word">
+                    <div class="trabajo-badge badge-log">LOG</div>
                     <div class="trabajo-icon">
-                        <i class="fas fa-file-excel"></i>
+                        <i class="fas fa-file-alt"></i>
                     </div>
-                    <h3 class="trabajo-title">Base de Datos Geoespacial</h3>
+                    <h3 class="trabajo-title">Log de Ejecución - Gauseano</h3>
                     <p class="trabajo-description">
-                        Dataset completo con coordenadas, variables ambientales y análisis
-                        estadísticos realizados en el proyecto.
+                        Registro detallado de ejecución de algoritmos de procesos gauseanos
+                        con métricas de rendimiento y convergencia.
                     </p>
                     <div class="trabajo-meta">
                         <div class="btn-group">
-                            <a href="#" class="btn btn-success" target="_blank">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/gauseano.log" class="btn btn-success" target="_blank">
                                 <i class="fas fa-eye"></i> Ver
                             </a>
-                            <a href="#" class="btn btn-secondary" download>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/gauseano.log" class="btn btn-secondary" download>
                                 <i class="fas fa-download"></i> Descargar
                             </a>
                         </div>
-                        <div class="trabajo-date">Sep 2024</div>
+                        <div class="trabajo-date">2 días</div>
                     </div>
                 </div>
 
-                <!-- Trabajo 4 - Presentación (Ejemplo) -->
-                <div class="trabajo-card" data-category="presentacion">
-                    <div class="trabajo-badge badge-presentacion">PPT</div>
+                <div class="trabajo-card" data-category="pdf">
+                    <div class="trabajo-badge badge-pdf">PDF</div>
                     <div class="trabajo-icon">
-                        <i class="fas fa-file-powerpoint"></i>
+                        <i class="fas fa-book"></i>
                     </div>
-                    <h3 class="trabajo-title">Presentación del Proyecto</h3>
+                    <h3 class="trabajo-title">Matrices de Pesos & Referencias</h3>
                     <p class="trabajo-description">
-                        Presentación ejecutiva del proyecto de estadística espacial con IA.
-                        Incluye gráficos, resultados y demostraciones visuales.
+                        Compilación de matrices de pesos espaciales, metodología de Moran
+                        y análisis de Geary con referencias bibliográficas completas.
                     </p>
                     <div class="trabajo-meta">
                         <div class="btn-group">
-                            <a href="#" class="btn btn-success" target="_blank">
+                            <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/%5B1%5DMatrices-de-Pesos.-%5B2%5DMoran.-%5B3%5DGeary-y-%5B4%5DReferencias-2.pdf" class="btn btn-accent" target="_blank">
                                 <i class="fas fa-eye"></i> Ver
                             </a>
-                            <a href="#" class="btn btn-secondary" download>
+                            <a href="https://raw.githubusercontent.com/18uriel/Estadistica-Espacial/main/%5B1%5DMatrices-de-Pesos.-%5B2%5DMoran.-%5B3%5DGeary-y-%5B4%5DReferencias-2.pdf" class="btn btn-secondary" download>
                                 <i class="fas fa-download"></i> Descargar
                             </a>
                         </div>
-                        <div class="trabajo-date">Dic 2024</div>
-                    </div>
-                </div>
-
-                <!-- Espacio para futuros trabajos -->
-                <div class="trabajo-card" style="border: 2px dashed rgba(255,255,255,0.3); background: transparent;">
-                    <div class="trabajo-icon">
-                        <i class="fas fa-plus-circle"></i>
-                    </div>
-                    <h3 class="trabajo-title">Próximos Trabajos</h3>
-                    <p class="trabajo-description">
-                        Espacio reservado para futuros trabajos académicos, investigaciones
-                        y proyectos que se irán añadiendo progresivamente.
-                    </p>
-                    <div class="trabajo-meta">
-                        <div class="trabajo-date">Próximamente</div>
+                        <div class="trabajo-date">4 días</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <h2 class="section-title">Tecnologías Implementadas</h2>
@@ -962,7 +1079,6 @@
         </div>
     </section>
 
-    <!-- Demo Section -->
     <section class="demo" id="demo">
         <div class="container">
             <h2 class="section-title">Demostraciones Visuales</h2>
@@ -1001,25 +1117,24 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats" id="stats">
         <div class="container">
             <h2 class="section-title">Métricas del Proyecto</h2>
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Algoritmos Implementados</div>
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Trabajos Académicos</div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-number">10K</div>
-                    <div class="stat-label">Líneas de Código</div>
+                    <div class="stat-number">28</div>
+                    <div class="stat-label">Commits en GitHub</div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Casos de Estudio</div>
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Modelos Implementados</div>
                 </div>
                 
                 <div class="stat-card">
@@ -1030,7 +1145,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1057,7 +1171,7 @@
                 <div class="footer-section">
                     <h3>Recursos</h3>
                     <div class="footer-links">
-                        <a href="Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf" target="_blank">Research Statement</a>
+                        <a href="https://github.com/18uriel/Estadistica-Espacial/blob/main/Research%20Statement%20-%20URIEL%20ROJAS%20CHURQUIPA%20QUISPE.pdf" target="_blank">Research Statement</a>
                         <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">GitHub Repository</a>
                         <a href="#">U.N.A. - Puno</a>
                         <a href="#">Décimo Semestre</a>
@@ -1072,10 +1186,8 @@
         </div>
     </footer>
 
-    <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particles.js Configuration
         particlesJS('particles-js', {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -1110,7 +1222,6 @@
             }
         });
 
-        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
@@ -1122,16 +1233,13 @@
             }
         });
 
-        // Filtros de trabajos
         document.addEventListener('DOMContentLoaded', function() {
             const filtroBtns = document.querySelectorAll('.filtro-btn');
             const trabajoCards = document.querySelectorAll('.trabajo-card');
 
             filtroBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // Remover clase active de todos los botones
                     filtroBtns.forEach(b => b.classList.remove('active'));
-                    // Agregar clase active al botón clickeado
                     this.classList.add('active');
                     
                     const filter = this.getAttribute('data-filter');
@@ -1155,7 +1263,6 @@
             });
         });
 
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
