@@ -396,6 +396,17 @@
             transform: translateY(-2px);
         }
 
+        .filtro-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .filtro-btn:disabled:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            transform: none;
+        }
+
         .trabajos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -840,7 +851,7 @@
         const GITHUB_REPO = 'Estadistica-Espacial';
         const GITHUB_BRANCH = 'main';
 
-        // Archivos de ejemplo con unidad asignada
+        // Archivos de ejemplo - TODOS de la Primera Unidad
         const manualFiles = [
             // Primera Unidad
             { name: 'Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf', path: 'Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf', size: 150000, unidad: 'unidad1' },
@@ -848,15 +859,11 @@
             { name: 'Modelos_Bayesianos_Jerarquicos_Espaciales.pdf', path: 'Modelos_Bayesianos_Jerarquicos_Espaciales.pdf', size: 200000, unidad: 'unidad1' },
             { name: 'Modelos_Bayesianos_Jerarquicos_Espaciales.png', path: 'Modelos_Bayesianos_Jerarquicos_Espaciales.png', size: 300000, unidad: 'unidad1' },
             { name: 'Analisis_Exploratorio_Espacial.R', path: 'Analisis_Exploratorio_Espacial.R', size: 50000, unidad: 'unidad1' },
-            
-            // Segunda Unidad
-            { name: 'MODELADO BAYESIANO.R', path: 'MODELADO BAYESIANO.R', size: 50000, unidad: 'unidad2' },
-            { name: 'Kriging_Universal.pdf', path: 'Kriging_Universal.pdf', size: 180000, unidad: 'unidad2' },
-            { name: 'Geoestadistica_Aplicada.docx', path: 'Geoestadistica_Aplicada.docx', size: 80000, unidad: 'unidad2' },
-            { name: 'Mapas_Tematicos.png', path: 'Mapas_Tematicos.png', size: 250000, unidad: 'unidad2' },
-            { name: 'Autocorrelacion_Espacial.R', path: 'Autocorrelacion_Espacial.R', size: 45000, unidad: 'unidad2' },
-            { name: 'Regresion_Espacial.pdf', path: 'Regresion_Espacial.pdf', size: 220000, unidad: 'unidad2' },
-            { name: 'Simulacion_Espacial.R', path: 'Simulacion_Espacial.R', size: 60000, unidad: 'unidad2' }
+            { name: 'Introduccion_Estadistica_Espacial.docx', path: 'Introduccion_Estadistica_Espacial.docx', size: 80000, unidad: 'unidad1' },
+            { name: 'Autocorrelacion_Espacial.R', path: 'Autocorrelacion_Espacial.R', size: 45000, unidad: 'unidad1' },
+            { name: 'Mapas_Tematicos.png', path: 'Mapas_Tematicos.png', size: 250000, unidad: 'unidad1' },
+            { name: 'Kriging_Universal.pdf', path: 'Kriging_Universal.pdf', size: 180000, unidad: 'unidad1' },
+            { name: 'Simulacion_Espacial.R', path: 'Simulacion_Espacial.R', size: 60000, unidad: 'unidad1' }
         ];
 
         let currentFilter = 'todos';
