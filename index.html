@@ -221,7 +221,6 @@
             margin-bottom: 40px;
             font-weight: 400;
             line-height: 1.6;
-            animation: slideUp 1s ease-out 0.2s both;
         }
 
         .student-info {
@@ -570,16 +569,22 @@
             border: 1px solid rgba(63, 81, 181, 0.3);
         }
 
-        .badge-folder {
+        .badge-zip {
             background: rgba(255, 193, 7, 0.2);
             color: #ffd54f;
             border: 1px solid rgba(255, 193, 7, 0.3);
         }
 
-        .badge-default {
+        .badge-folder {
             background: rgba(156, 39, 176, 0.2);
             color: #ba68c8;
             border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+
+        .badge-default {
+            background: rgba(108, 78, 244, 0.2);
+            color: var(--primary-light);
+            border: 1px solid rgba(108, 78, 244, 0.3);
         }
 
         .trabajo-icon {
@@ -778,6 +783,30 @@
             flex-wrap: wrap;
         }
 
+        .unidad-header {
+            text-align: center;
+            margin: 60px 0 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(108, 78, 244, 0.1), rgba(0, 210, 168, 0.1));
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .unidad-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .unidad-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -807,6 +836,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             max-width: 300px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         @media (max-width: 768px) {
@@ -853,6 +885,10 @@
                 left: 20px;
                 right: 20px;
                 max-width: none;
+            }
+
+            .unidad-title {
+                font-size: 2rem;
             }
         }
     </style>
@@ -901,7 +937,8 @@
                 </h1>
                 
                 <p class="hero-subtitle">
-                    Portafolio digital de trabajos académicos, tareas y proyectos del curso de Estadística Espacial.
+                    Portafolio digital con todos los trabajos académicos del curso de Estadística Espacial. 
+                    Accede a tareas, proyectos y archivos desde GitHub.
                 </p>
 
                 <div class="student-info">
@@ -939,13 +976,13 @@
 
                 <div class="btn-group">
                     <a href="https://github.com/18uriel/Estadistica-Espacial" class="btn btn-primary" target="_blank">
-                        <i class="fab fa-github"></i> Explorar Repositorio
+                        <i class="fab fa-github"></i> Ver en GitHub
                     </a>
                     <a href="#tareas" class="btn btn-success">
-                        <i class="fas fa-tasks"></i> Ver Tareas
+                        <i class="fas fa-tasks"></i> Ver Tareas (20)
                     </a>
                     <a href="#trabajos" class="btn btn-accent">
-                        <i class="fas fa-folder-open"></i> Ver Mis Trabajos
+                        <i class="fas fa-folder-open"></i> Ver Archivos (19)
                     </a>
                 </div>
             </div>
@@ -954,67 +991,77 @@
 
     <section class="trabajos-section" id="tareas">
         <div class="container">
-            <h2 class="section-title">Tareas Asignadas</h2>
+            <h2 class="section-title">📋 Tareas Asignadas</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 40px; font-size: 1.1rem;">
+                20 tareas completadas organizadas por unidad
+            </p>
             
-            <div class="tareas-grid" id="tareasContainer">
-                <!-- Las tareas se cargarán aquí -->
+            <div class="unidad-header">
+                <h3 class="unidad-title">PRIMERA UNIDAD</h3>
+                <p class="unidad-subtitle">8 tareas | Estadística Espacial Básica</p>
+            </div>
+            
+            <div class="tareas-grid" id="tareasUnidad1">
+                <!-- Tareas Unidad 1 -->
+            </div>
+
+            <div class="unidad-header">
+                <h3 class="unidad-title">SEGUNDA UNIDAD</h3>
+                <p class="unidad-subtitle">12 tareas | Aplicaciones con QGIS y Google Earth</p>
+            </div>
+            
+            <div class="tareas-grid" id="tareasUnidad2">
+                <!-- Tareas Unidad 2 -->
             </div>
         </div>
     </section>
 
     <section class="trabajos-section" id="trabajos" style="padding-top: 50px;">
         <div class="container">
-            <h2 class="section-title">Mis Trabajos Académicos</h2>
+            <h2 class="section-title">📁 Archivos en GitHub</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 40px; font-size: 1.1rem;">
+                19 archivos académicos disponibles para ver y descargar
+            </p>
             
             <div class="filtros">
-                <button class="filtro-btn active" data-filter="todos">Todos</button>
+                <button class="filtro-btn active" data-filter="todos">Todos los Archivos</button>
                 <button class="filtro-btn" data-filter="unidad1">Primera Unidad</button>
                 <button class="filtro-btn" data-filter="unidad2">Segunda Unidad</button>
                 <button class="filtro-btn" data-filter="pdf">PDF</button>
-                <button class="filtro-btn" data-filter="code">Código (R)</button>
-                <button class="filtro-btn" data-filter="doc">Documentos</button>
+                <button class="filtro-btn" data-filter="code">Código R</button>
+                <button class="filtro-btn" data-filter="zip">Archivos ZIP</button>
                 <button class="filtro-btn" data-filter="image">Imágenes</button>
             </div>
             
-            <div style="text-align: center; margin-bottom: 40px;">
-                <button class="btn btn-success" onclick="document.getElementById('fileUpload').click()">
-                    <i class="fas fa-upload"></i> Subir Archivo desde PC
-                </button>
-                <input type="file" id="fileUpload" style="display: none;" multiple accept=".pdf,.docx,.doc,.r,.png,.jpg,.jpeg,.log,.html,.tex">
-            </div>
-            
-            <div id="trabajosContainer" class="trabajos-grid">
-                <div class="loading-container">
-                    <div class="loading-spinner"></div>
-                    <p style="margin-top: 20px; color: var(--text-gray);">Cargando trabajos académicos...</p>
-                </div>
+            <div id="trabajosContainer">
+                <!-- Los archivos se cargarán aquí -->
             </div>
         </div>
     </section>
 
     <section class="stats" id="stats">
         <div class="container">
-            <h2 class="section-title">Métricas del Proyecto</h2>
+            <h2 class="section-title">📊 Estadísticas del Proyecto</h2>
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number" id="totalFiles">--</div>
-                    <div class="stat-label">Archivos Totales</div>
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Tareas Completadas</div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-number" id="totalCommits">29</div>
-                    <div class="stat-label">Commits en GitHub</div>
+                    <div class="stat-number" id="totalFiles">19</div>
+                    <div class="stat-label">Archivos en GitHub</div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-number" id="totalPDFs">--</div>
+                    <div class="stat-number" id="totalPDFs">14</div>
                     <div class="stat-label">Documentos PDF</div>
                 </div>
                 
                 <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Código Abierto</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Unidades Académicas</div>
                 </div>
             </div>
         </div>
@@ -1032,9 +1079,12 @@
                 <p>Vista previa del archivo</p>
             </div>
             <div class="modal-actions">
-                <button class="btn btn-primary" onclick="downloadCurrentFile()">
+                <a id="viewFileBtn" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-eye"></i> Ver en GitHub
+                </a>
+                <a id="downloadFileBtn" class="btn btn-success">
                     <i class="fas fa-download"></i> Descargar Archivo
-                </button>
+                </a>
                 <button class="btn btn-secondary" onclick="closeModal()">
                     <i class="fas fa-times"></i> Cerrar
                 </button>
@@ -1046,7 +1096,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Estadística Espacial IA</h3>
+                    <h3>Estadística Espacial AI</h3>
                     <p style="color: var(--text-gray); margin-top: 20px;">
                         Proyecto académico de vanguardia - Universidad Nacional del Altiplano Puno<br>
                         Facultad de Ingeniería Estadística e Informática<br>
@@ -1084,448 +1134,336 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Archivos académicos según la segunda imagen
-        const archivosAcademicos = [
+        // Configuración de GitHub
+        const GITHUB_USER = '18uriel';
+        const GITHUB_REPO = 'Estadistica-Espacial';
+        const GITHUB_BRANCH = 'main';
+        const GITHUB_API = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`;
+
+        // Archivos exactos según la imagen blanca
+        const archivosGitHub = [
             // PRIMERA UNIDAD
             {
-                id: 1,
-                name: 'Posicionamiento de Informacion.R',
-                descripcion: 'Código R para posicionamiento de información en mapa de Puno',
-                fecha: '10/09/2025',
+                name: 'Posicionamiento de Información.R',
+                filename: 'Posicionamiento de Información.R',
                 unidad: 'unidad1',
                 categoria: 'Código R',
                 icon: '📊',
                 extension: '.R',
-                contenido: `# Posicionamiento de Información - Puno
-# Autor: Uriel Rojas Churquipa Quispe
-# Fecha: 10/09/2025
-# Curso: Estadística Espacial
-
-# Cargar librerías
-library(sp)
-library(sf)
-library(ggplot2)
-library(rgdal)
-
-# Cargar datos ENA
-datos_ena <- read.csv("datos_ena_puno.csv")
-
-# Crear mapa de posicionamiento
-ggplot(datos_ena, aes(x = longitud, y = latitud, color = variable)) +
-  geom_point(size = 3) +
-  theme_minimal() +
-  labs(title = "Posicionamiento de Variable en Puno",
-       subtitle = "Datos ENA",
-       x = "Longitud",
-       y = "Latitud")
-
-# Guardar resultados
-ggsave("posicionamiento_puno.png", width = 10, height = 8, dpi = 300)`
+                descripcion: 'Código R para posicionamiento de información en mapa de Puno'
             },
             {
-                id: 2,
                 name: 'Ejemplo Muestreo Bootstrap.pdf',
-                descripcion: 'Documento PDF con ejemplo de muestreo bootstrap en R',
-                fecha: '16/09/2025',
+                filename: 'Ejemplo Muestreo Bootstrap.pdf',
                 unidad: 'unidad1',
                 categoria: 'PDF',
                 icon: '📄',
                 extension: '.pdf',
-                contenido: null // Los PDFs se generan con contenido HTML
+                descripcion: 'Documento PDF con ejemplo de muestreo bootstrap en R'
             },
             {
-                id: 3,
                 name: 'Gaussian Random Fields.pdf',
-                descripcion: 'Documento sobre Gaussian Random Fields',
-                fecha: '17/09/2025',
+                filename: 'Gaussian Random Fields.pdf',
                 unidad: 'unidad1',
                 categoria: 'PDF',
                 icon: '📈',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Documento sobre Gaussian Random Fields'
             },
             {
-                id: 4,
-                name: 'Research Statement [3 paginas].pdf',
-                descripcion: 'Research Statement con 20 referencias mínimo',
-                fecha: '26/09/2025',
+                name: 'Research Statement [3 páginas].pdf',
+                filename: 'Research Statement [3 páginas].pdf',
                 unidad: 'unidad1',
                 categoria: 'PDF',
                 icon: '📑',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Research Statement con 20 referencias mínimo'
             },
             {
-                id: 5,
                 name: 'Repositorio de github.png',
-                descripcion: 'Captura de pantalla del repositorio de GitHub',
-                fecha: '26/09/2025',
+                filename: 'Repositorio de github.png',
                 unidad: 'unidad1',
                 categoria: 'Imagen',
                 icon: '🐙',
                 extension: '.png',
-                contenido: null
+                descripcion: 'Captura de pantalla del repositorio de GitHub'
             },
             {
-                id: 6,
-                name: 'Aplicacion de Autocorrelacion Espacial.pdf',
-                descripcion: 'Resumen de artículos sobre autocorrelación espacial',
-                fecha: '03/10/2025',
+                name: 'Aplicación de Autocorrelación Espacial (2).zip',
+                filename: 'Aplicación de Autocorrelación Espacial (2).zip',
                 unidad: 'unidad1',
-                categoria: 'PDF',
-                icon: '🔗',
-                extension: '.pdf',
-                contenido: null
+                categoria: 'ZIP',
+                icon: '📦',
+                extension: '.zip',
+                descripcion: 'Archivo ZIP con aplicación de autocorrelación espacial'
             },
             {
-                id: 7,
-                name: 'Ejemplificar [1]Matrices de Pesos....R',
-                descripcion: 'Ejemplo de código en R para matrices de pesos, Moran, Geary y hotspots',
-                fecha: '14/10/2025',
+                name: 'Ejemplificar [1]Matrices de Pesos, [2]Moran, [3]...',
+                filename: 'Ejemplificar [1]Matrices de Pesos, [2]Moran, [3]Geary y [4]Hotspots.R',
                 unidad: 'unidad1',
                 categoria: 'Código R',
                 icon: '🧮',
                 extension: '.R',
-                contenido: `# Matrices de Pesos, Moran, Geary y Hotspots
-# Autor: Uriel Rojas
-# Fecha: 14/10/2025
-
-# Instalar y cargar paquetes
-# install.packages(c("spdep", "sf", "ggplot2"))
-library(spdep)
-library(sf)
-library(ggplot2)
-
-# 1. MATRICES DE PESOS
-# Crear matriz de pesos por contigüidad
-coords <- matrix(rnorm(100), ncol=2)
-nb <- knn2nb(knearneigh(coords, k=4))
-listw <- nb2listw(nb, style="W")
-
-# 2. ESTADÍSTICO DE MORAN
-# Calcular I de Moran
-x <- rnorm(50)
-moran.test(x, listw)
-
-# 3. ESTADÍSTICO DE GEARY
-# Calcular C de Geary
-geary.test(x, listw)
-
-# 4. HOTSPOTS (Getis-Ord Gi*)
-# Identificar clusters espaciales
-localG <- localG(x, listw)
-summary(localG)`
+                descripcion: 'Ejemplo de código en R para matrices de pesos, Moran, Geary y hotspots'
             },
             {
-                id: 8,
                 name: 'Adjuntar Evidencia de Paper.pdf',
-                descripcion: 'Artículo científico y correo de acuse de recibo',
-                fecha: '17/10/2023',
+                filename: 'Adjuntar Evidencia de Paper.pdf',
                 unidad: 'unidad1',
                 categoria: 'PDF',
                 icon: '📚',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Artículo científico y correo de acuse de recibo'
+            },
+            {
+                name: 'Resumen de Lectura.pdf',
+                filename: 'Resumen de Lectura.pdf',
+                unidad: 'unidad2',
+                categoria: 'PDF',
+                icon: '📝',
+                extension: '.pdf',
+                descripcion: 'Resumen manuscrito de papers adjuntos'
             },
 
-            // SEGUNDA UNIDAD (según la primera imagen)
+            // SEGUNDA UNIDAD
             {
-                id: 9,
                 name: 'Instalar QGIS.pdf',
-                descripcion: 'Guía de instalación y evidencia de QGIS',
-                fecha: '28/10/2023',
+                filename: 'Instalar QGIS.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '🗺️',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Guía de instalación y evidencia de QGIS'
             },
             {
-                id: 10,
-                name: 'Polígonos Puntos y Líneas.pdf',
-                descripcion: 'Práctica con imágenes de drone - Formas geométricas',
-                fecha: '07/11/2023',
+                name: 'Polígonos Puntos y Líneas.zip',
+                filename: 'Polígonos Puntos y Líneas.zip',
                 unidad: 'unidad2',
-                categoria: 'PDF',
+                categoria: 'ZIP',
                 icon: '📐',
-                extension: '.pdf',
-                contenido: null
+                extension: '.zip',
+                descripcion: 'Archivo ZIP con práctica de polígonos, puntos y líneas'
             },
             {
-                id: 11,
                 name: 'Puno - Conectividad.pdf',
-                descripcion: 'Vista de impresión de práctica de conectividad',
-                fecha: '01/12/2023',
+                filename: 'Puno - Conectividad.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '🔗',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Vista de impresión de práctica de conectividad'
             },
             {
-                id: 12,
                 name: 'Representación Problemática Nacional.pdf',
-                descripcion: 'Aplicación de ubicación geoespacial en QGIS',
-                fecha: '06/12/2023',
+                filename: 'Representación Problemática Nacional.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '📍',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Aplicación de ubicación geoespacial en QGIS'
             },
             {
-                id: 13,
                 name: '1_Introducción.pdf',
-                descripcion: 'Introducción del artículo científico',
-                fecha: '10/12/2023',
+                filename: '1_Introducción.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '📖',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Introducción del artículo científico'
             },
             {
-                id: 14,
                 name: '2-Materiales_Métodos.pdf',
-                descripcion: 'Materiales y métodos del paper',
-                fecha: '10/12/2023',
+                filename: '2-Materiales_Métodos.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '🧪',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Materiales y métodos del paper'
             },
             {
-                id: 15,
                 name: '3_Resultados.pdf',
-                descripcion: 'Resultados del paper de la 2da unidad',
-                fecha: '10/12/2023',
+                filename: '3_Resultados.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '📊',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Resultados del paper de la 2da unidad'
             },
             {
-                id: 16,
                 name: '4_Discusión y Conclusiones.pdf',
-                descripcion: 'Discusión y conclusiones del paper',
-                fecha: '10/12/2023',
+                filename: '4_Discusión y Conclusiones.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '💭',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Discusión y conclusiones del paper'
             },
             {
-                id: 17,
                 name: 'Paper Completo.pdf',
-                descripcion: 'Paper completo del curso',
-                fecha: '10/12/2023',
+                filename: 'Paper Completo.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '📚',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Paper completo del curso'
             },
             {
-                id: 18,
-                name: 'Shapes to Google Earth.pdf',
-                descripcion: 'Exportación de shapes de QGIS a Google Earth Engine',
-                fecha: '10/12/2023',
+                name: '1_Shapes to Google Earth.pdf',
+                filename: '1_Shapes to Google Earth.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '🌍',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Exportación de shapes de QGIS a Google Earth Engine'
             },
             {
-                id: 19,
-                name: 'Google Earth Engine Apps.pdf',
-                descripcion: 'Aplicación con datasets de APIs y satélites',
-                fecha: '10/12/2023',
+                name: 'Application Google Earth Engine Apps.pdf',
+                filename: 'Application Google Earth Engine Apps.pdf',
                 unidad: 'unidad2',
                 categoria: 'PDF',
                 icon: '🚀',
                 extension: '.pdf',
-                contenido: null
+                descripcion: 'Aplicación con datasets de APIs y satélites'
             }
         ];
 
-        // Tareas asignadas organizadas por unidad
-        const tareasAsignadas = [
-            { 
-                titulo: 'Posicionamiento de Información', 
-                fechaInicio: '10/09/2025 17:36', 
-                fechaCierre: '10/09/2025 19:00',
-                descripcion: 'Adjuntar la Actividad de clase (Posicionamiento de una variable en el mapa de Puno) DATOS...ENA',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Ejemplo : Muestreo Bootstrap', 
-                fechaInicio: '16/09/2025 17:35', 
-                fechaCierre: '16/09/2025 19:00',
-                descripcion: 'Escribe un fragmento de código que realice el muestreo por bootstrap considerando principios de aleatoriedad',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Gaussian Random Fields', 
-                fechaInicio: '17/09/2025 17:22', 
-                fechaCierre: '17/09/2025 18:30',
-                descripcion: 'Adjuntar Ejemplo de Clase',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Research Statement [3 páginas]', 
-                fechaInicio: '26/09/2025 19:39', 
-                fechaCierre: '30/09/2025 13:00',
-                descripcion: 'Research Statement [3 páginas] - 20 referencias mínimo',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Repositorio de github', 
-                fechaInicio: '26/09/2025 19:48', 
-                fechaCierre: '26/09/2025 19:00',
-                descripcion: 'Evidencia de pull request para portafolios',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Aplicación de Autocorrelación Espacial', 
-                fechaInicio: '03/10/2025 19:14', 
-                fechaCierre: '07/10/2025 15:00',
-                descripcion: 'Realizar un resumen de los artículos y su convergencia, con la autocorrelación espacial.',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Ejemplificar [1] Matrices de Pesos, [2] Moran, [3] Geary y [4] Hotspots', 
-                fechaInicio: '14/10/2025 17:26', 
-                fechaCierre: '15/10/2025 17:00',
-                descripcion: 'Desarrollar un ejemplo de código en R para matrices de pesos, Moran, Geary y hotspots.',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Adjuntar Evidencia de Paper', 
-                fechaInicio: '17/10/2023 16:56', 
-                fechaCierre: '09/12/2023 23:39',
-                descripcion: '1. Adjuntar Artículo Científico (1 archivo). 2. Correo de acuse de recibo (1 archivo).',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Resumen de Lectura', 
-                fechaInicio: '21/10/2023 17:07', 
-                fechaCierre: '22/10/2023 23:39',
-                descripcion: 'En máximo de 2 hojas realizar un resumen sobre los papers adjuntos, el resumen debe ser manuscrito (no word, latex, no PC) - (A Mano), luego adjuntar la fotografía en PDF.',
-                unidad: 'unidad1',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Instalar QGIS', 
-                fechaInicio: '28/10/2023 17:18', 
-                fechaCierre: '26/10/2023 23:39',
-                descripcion: 'Instalar QGIS, enviar evidencia de la instalación del programa',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Polígonos Puntos y Líneas', 
-                fechaInicio: '07/11/2023 16:09', 
-                fechaCierre: '10/11/2023 23:09',
-                descripcion: 'Realizar el fórmil de la practica 1, con imágen del drone.',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Puno - Conectividad', 
-                fechaInicio: '01/12/2023 16:26', 
-                fechaCierre: '03/12/2023 23:39',
-                descripcion: 'Adjuntar Vista de Impresión de la Practica de Clase',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Representación Problemática Nacional', 
-                fechaInicio: '06/12/2023 16:17', 
-                fechaCierre: '04/12/2023 23:39',
-                descripcion: 'Adjuntar la aplicación de ubicación geocapsulal para representar datos de la problemática nacional (Magas QGIS). Interpretación del aporte a la problemática identificada (Interpretación)',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: '1_Introducción', 
-                fechaInicio: '10/12/2023 15:29', 
-                fechaCierre: '12/12/2023 15:29',
-                descripcion: 'Introducción del Artículo Científico.',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: '2-Materiales_Métodos', 
-                fechaInicio: '10/12/2023 15:31', 
-                fechaCierre: '21/12/2023 19:31',
-                descripcion: 'Materiales y Métodos',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: '3 Resultados', 
-                fechaInicio: '10/12/2023 15:32', 
-                fechaCierre: '21/12/2023 18:23',
-                descripcion: 'Resultados del Paper de la 2da unidad',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: '4 Discusión y Conclusiones', 
-                fechaInicio: '10/12/2023 15:32', 
-                fechaCierre: '21/12/2023 18:24',
-                descripcion: 'Discusión y Conclusiones',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Paper Completo', 
-                fechaInicio: '10/12/2023 15:35', 
-                fechaCierre: '22/12/2023 22:24',
-                descripcion: 'Adjuntar el Paper Completo del Curso',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: '1 Shapes to Google Earth', 
-                fechaInicio: '10/12/2023 17:00', 
-                fechaCierre: '10/12/2023 23:59',
-                descripcion: 'Shapes from Qigs to Google Earth Engine',
-                unidad: 'unidad2',
-                estado: 'completado'
-            },
-            { 
-                titulo: 'Applicación Google Earth Engine Apps', 
-                fechaInicio: '10/12/2023 17:46', 
-                fechaCierre: '13/12/2023 23:59',
-                descripcion: 'Utilizando los datos seleccionados, en su proyecto otorgarse funcionalidad y añadir datasets de apis, satélites y fuentes de información que le otorgue valor agregado y le dé funcionalidades de dataciones a la aplicación.',
-                unidad: 'unidad2',
-                estado: 'completado'
-            }
-        ];
+        // Tareas asignadas según la segunda imagen
+        const tareasAsignadas = {
+            unidad1: [
+                { 
+                    id: 1,
+                    titulo: 'Posicionamiento de Información', 
+                    descripcion: 'Adjuntar la Actividad de clase (Posicionamiento de una variable en el mapa de Puno) DATOS...ENA',
+                    icon: '🗺️'
+                },
+                { 
+                    id: 2,
+                    titulo: 'Ejemplo : Muestreo Bootstrap', 
+                    descripcion: 'Escribe un fragmento de código que realice el muestreo por bootstrap considerando principios de aleatoriedad',
+                    icon: '📊'
+                },
+                { 
+                    id: 3,
+                    titulo: 'Gaussian Random Fields', 
+                    descripcion: 'Adjuntar Ejemplo de Clase',
+                    icon: '📈'
+                },
+                { 
+                    id: 4,
+                    titulo: 'Research Statement [3 páginas]', 
+                    descripcion: 'Research Statement [3 páginas] - 20 referencias mínimo',
+                    icon: '📑'
+                },
+                { 
+                    id: 5,
+                    titulo: 'Repositorio de github', 
+                    descripcion: 'Evidencia de pull request para portafolios',
+                    icon: '🐙'
+                },
+                { 
+                    id: 6,
+                    titulo: 'Aplicación de Autocorrelación Espacial', 
+                    descripcion: 'Realizar un resumen de los artículos y su convergencia, con la autocorrelación espacial.',
+                    icon: '🔗'
+                },
+                { 
+                    id: 7,
+                    titulo: 'Ejemplificar [1]Matrices de Pesos, [2]Moran, [3]Geary y [4]Hotspots', 
+                    descripcion: 'Desarrollar un ejemplo de código en R para matrices de pesos, Moran, Geary y hotspots.',
+                    icon: '🧮'
+                },
+                { 
+                    id: 8,
+                    titulo: 'Adjuntar Evidencia de Paper', 
+                    descripcion: '1. Adjuntar Artículo Científico (1 archivo). 2. Correo de acuse de recibo (1 archivo).',
+                    icon: '📚'
+                }
+            ],
+            unidad2: [
+                { 
+                    id: 9,
+                    titulo: 'Resumen de Lectura', 
+                    descripcion: 'En máximo de 2 hojas realizar un resumen sobre los papers adjuntos, el resumen debe ser manuscrito (no word, latex, no PC) - (A Mano), luego adjuntar la fotografía en PDF.',
+                    icon: '📝'
+                },
+                { 
+                    id: 10,
+                    titulo: 'Instalar QGIS', 
+                    descripcion: 'Instalar QGIS, enviar evidencia de la instalación del programa',
+                    icon: '🗺️'
+                },
+                { 
+                    id: 11,
+                    titulo: 'Polígonos Puntos y Líneas', 
+                    descripcion: 'Realizar el fórmil de la practica 1, con imágen del drone.',
+                    icon: '📐'
+                },
+                { 
+                    id: 12,
+                    titulo: 'Puno - Conectividad', 
+                    descripcion: 'Adjuntar Vista de Impresión de la Practica de Clase',
+                    icon: '🔗'
+                },
+                { 
+                    id: 13,
+                    titulo: 'Representación Problemática Nacional', 
+                    descripcion: 'Adjuntar la aplicación de ubicación geocapsulal para representar datos de la problemática nacional (Magas QGIS). Interpretación del aporte a la problemática identificada (Interpretación)',
+                    icon: '📍'
+                },
+                { 
+                    id: 14,
+                    titulo: '1_Introducción', 
+                    descripcion: 'Introducción del Artículo Científico.',
+                    icon: '📖'
+                },
+                { 
+                    id: 15,
+                    titulo: '2-Materiales_Métodos', 
+                    descripcion: 'Materiales y Métodos',
+                    icon: '🧪'
+                },
+                { 
+                    id: 16,
+                    titulo: '3_Resultados', 
+                    descripcion: 'Resultados del Paper de la 2da unidad',
+                    icon: '📊'
+                },
+                { 
+                    id: 17,
+                    titulo: '4_Discusión y Conclusiones', 
+                    descripcion: 'Discusión y Conclusiones',
+                    icon: '💭'
+                },
+                { 
+                    id: 18,
+                    titulo: 'Paper Completo', 
+                    descripcion: 'Adjuntar el Paper Completo del Curso',
+                    icon: '📚'
+                },
+                { 
+                    id: 19,
+                    titulo: '1_Shapes to Google Earth', 
+                    descripcion: 'Shapes from Qigs to Google Earth Engine',
+                    icon: '🌍'
+                },
+                { 
+                    id: 20,
+                    titulo: 'Applicación Google Earth Engine Apps', 
+                    descripcion: 'Utilizando los datos seleccionados, en su proyecto otorgarse funcionalidad y añadir datasets de apis, satélites y fuentes de información que le otorgue valor agregado y le dé funcionalidades de dataciones a la aplicación.',
+                    icon: '🚀'
+                }
+            ]
+        };
 
         let currentFilter = 'todos';
-        let uploadedFiles = [];
         let currentFile = null;
 
         // Inicializar la aplicación
         document.addEventListener('DOMContentLoaded', function() {
             initParticles();
             initEventListeners();
-            loadTareasAsignadas();
-            loadFiles();
+            loadTareas();
+            loadArchivos();
         });
 
         // Inicializar partículas de fondo
@@ -1574,13 +1512,9 @@ summary(localG)`
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     currentFilter = this.getAttribute('data-filter');
-                    filterFiles();
+                    filterArchivos();
                 });
             });
-
-            // Subida de archivos
-            const fileUpload = document.getElementById('fileUpload');
-            fileUpload.addEventListener('change', handleFileUpload);
 
             // Cerrar modal con ESC
             document.addEventListener('keydown', function(event) {
@@ -1588,91 +1522,135 @@ summary(localG)`
                     closeModal();
                 }
             });
+
+            // Cerrar modal haciendo click fuera
+            document.getElementById('fileModal').addEventListener('click', function(event) {
+                if (event.target === this) {
+                    closeModal();
+                }
+            });
         }
 
-        // Cargar tareas asignadas
-        function loadTareasAsignadas() {
-            const container = document.getElementById('tareasContainer');
-            
-            const tareasHTML = tareasAsignadas.map(tarea => {
-                const unidadNombre = tarea.unidad === 'unidad1' ? 'Primera Unidad' : 'Segunda Unidad';
-                const statusClass = tarea.estado === 'completado' ? 'status-completado' : 'status-pendiente';
-                const statusText = tarea.estado === 'completado' ? 'Completado' : 'Pendiente';
-                
-                return `
-                    <div class="tarea-card">
-                        <div class="tarea-icon">📋</div>
-                        <div class="tarea-content">
+        // Cargar tareas
+        function loadTareas() {
+            // Cargar tareas unidad 1
+            const containerUnidad1 = document.getElementById('tareasUnidad1');
+            containerUnidad1.innerHTML = tareasAsignadas.unidad1.map(tarea => `
+                <div class="tarea-card">
+                    <div class="tarea-icon">${tarea.icon}</div>
+                    <div class="tarea-content">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                            <span style="background: var(--primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;">${tarea.id}</span>
                             <h3 class="tarea-title">${tarea.titulo}</h3>
-                            <div class="tarea-meta">
-                                <div class="tarea-meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    Inicio: ${tarea.fechaInicio}
-                                </div>
-                                <div class="tarea-meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    Cierre: ${tarea.fechaCierre}
-                                </div>
-                            </div>
-                            <p class="tarea-description">${tarea.descripcion}</p>
-                            <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap;">
-                                <span class="tarea-status ${statusClass}">${statusText}</span>
-                                <span style="color: var(--text-gray); font-size: 0.85rem;">${unidadNombre}</span>
-                            </div>
+                        </div>
+                        <p class="tarea-description">${tarea.descripcion}</p>
+                        <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap;">
+                            <span class="tarea-status status-completado">Completado</span>
+                            <span style="color: var(--text-gray); font-size: 0.85rem;">Tarea ${tarea.id}/20</span>
                         </div>
                     </div>
-                `;
-            }).join('');
-            
-            container.innerHTML = tareasHTML;
+                </div>
+            `).join('');
+
+            // Cargar tareas unidad 2
+            const containerUnidad2 = document.getElementById('tareasUnidad2');
+            containerUnidad2.innerHTML = tareasAsignadas.unidad2.map(tarea => `
+                <div class="tarea-card">
+                    <div class="tarea-icon">${tarea.icon}</div>
+                    <div class="tarea-content">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                            <span style="background: var(--secondary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;">${tarea.id}</span>
+                            <h3 class="tarea-title">${tarea.titulo}</h3>
+                        </div>
+                        <p class="tarea-description">${tarea.descripcion}</p>
+                        <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap;">
+                            <span class="tarea-status status-completado">Completado</span>
+                            <span style="color: var(--text-gray); font-size: 0.85rem;">Tarea ${tarea.id}/20</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Cargar archivos
-        function loadFiles() {
-            displayFiles(archivosAcademicos);
-            updateStats(archivosAcademicos);
+        function loadArchivos() {
+            displayArchivos(archivosGitHub);
         }
 
         // Mostrar archivos en la interfaz
-        function displayFiles(files) {
+        function displayArchivos(archivos) {
             const container = document.getElementById('trabajosContainer');
             
-            if (files.length === 0) {
+            if (archivos.length === 0) {
                 container.innerHTML = `
                     <div class="loading-container">
                         <i class="fas fa-folder-open" style="font-size: 3rem; color: var(--text-gray); margin-bottom: 20px;"></i>
-                        <p style="color: var(--text-gray);">No se encontraron trabajos para mostrar.</p>
+                        <p style="color: var(--text-gray);">No se encontraron archivos para mostrar.</p>
                     </div>
                 `;
                 return;
             }
             
-            container.innerHTML = files.map(file => createFileCard(file)).join('');
+            // Agrupar por unidad
+            const archivosUnidad1 = archivos.filter(a => a.unidad === 'unidad1');
+            const archivosUnidad2 = archivos.filter(a => a.unidad === 'unidad2');
+            
+            let html = '';
+            
+            if (archivosUnidad1.length > 0) {
+                html += `
+                    <div class="unidad-header" style="margin-top: 0;">
+                        <h3 class="unidad-title">ARCHIVOS - PRIMERA UNIDAD</h3>
+                        <p class="unidad-subtitle">${archivosUnidad1.length} archivos | Código R y Documentos PDF</p>
+                    </div>
+                    <div class="trabajos-grid">
+                        ${archivosUnidad1.map(archivo => createArchivoCard(archivo)).join('')}
+                    </div>
+                `;
+            }
+            
+            if (archivosUnidad2.length > 0) {
+                html += `
+                    <div class="unidad-header">
+                        <h3 class="unidad-title">ARCHIVOS - SEGUNDA UNIDAD</h3>
+                        <p class="unidad-subtitle">${archivosUnidad2.length} archivos | QGIS y Google Earth Engine</p>
+                    </div>
+                    <div class="trabajos-grid">
+                        ${archivosUnidad2.map(archivo => createArchivoCard(archivo)).join('')}
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
         }
 
         // Crear tarjeta de archivo
-        function createFileCard(file) {
-            const unidad = file.unidad === 'unidad1' ? 'Primera Unidad' : 'Segunda Unidad';
-            const badgeClass = getBadgeClass(file.categoria);
-            const fileType = getFileType(file.categoria);
+        function createArchivoCard(archivo) {
+            const badgeClass = getBadgeClass(archivo.categoria);
+            const extension = getExtension(archivo.filename);
+            const unidad = archivo.unidad === 'unidad1' ? 'Unidad 1' : 'Unidad 2';
+            
+            // URLs para GitHub
+            const githubViewUrl = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/blob/${GITHUB_BRANCH}/${encodeURIComponent(archivo.filename)}`;
+            const githubRawUrl = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${encodeURIComponent(archivo.filename)}`;
             
             return `
-                <div class="trabajo-card" data-type="${fileType}" data-unidad="${file.unidad}">
-                    <div class="trabajo-badge ${badgeClass}">${file.categoria}</div>
-                    <div class="trabajo-icon">${file.icon}</div>
-                    <h3 class="trabajo-title">${file.name}</h3>
+                <div class="trabajo-card" data-type="${archivo.categoria}" data-unidad="${archivo.unidad}">
+                    <div class="trabajo-badge ${badgeClass}">${extension}</div>
+                    <div class="trabajo-icon">${archivo.icon}</div>
+                    <h3 class="trabajo-title">${archivo.name}</h3>
                     <p class="trabajo-description">
-                        ${file.descripcion}. Fecha: ${file.fecha}
+                        ${archivo.descripcion}
                     </p>
                     <div class="trabajo-meta">
-                        <span class="trabajo-date">${unidad}</span>
+                        <span class="trabajo-date">${unidad} • ${archivo.categoria}</span>
                         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="viewFile(${file.id})">
-                                <i class="fas fa-eye"></i> Ver Archivo
+                            <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="viewArchivo('${archivo.filename}', '${archivo.name}')">
+                                <i class="fas fa-eye"></i> Ver
                             </button>
-                            <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="downloadFile(${file.id})">
+                            <a href="${githubRawUrl}" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;" download="${archivo.filename}">
                                 <i class="fas fa-download"></i> Descargar
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1684,235 +1662,82 @@ summary(localG)`
             if (categoria === 'PDF') return 'badge-pdf';
             if (categoria === 'Código R') return 'badge-r';
             if (categoria === 'Imagen') return 'badge-png';
-            if (categoria === 'Documentos') return 'badge-docx';
+            if (categoria === 'ZIP') return 'badge-zip';
             return 'badge-default';
         }
 
-        // Obtener tipo de archivo
-        function getFileType(categoria) {
-            if (categoria === 'PDF') return 'pdf';
-            if (categoria === 'Código R') return 'code';
-            if (categoria === 'Imagen') return 'image';
-            if (categoria === 'Documentos') return 'doc';
-            return 'default';
+        // Obtener extensión del archivo
+        function getExtension(filename) {
+            const parts = filename.split('.');
+            return parts.length > 1 ? parts.pop().toUpperCase() : 'FILE';
         }
 
         // Ver archivo
-        function viewFile(fileId) {
-            const file = archivosAcademicos.find(f => f.id === fileId) || 
-                        uploadedFiles.find(f => f.id === fileId);
-            
-            if (!file) return;
-            
-            currentFile = file;
+        function viewArchivo(filename, name) {
+            currentFile = { filename, name };
             
             const modal = document.getElementById('fileModal');
             const modalFileName = document.getElementById('modalFileName');
             const modalPreview = document.getElementById('modalPreview');
+            const viewFileBtn = document.getElementById('viewFileBtn');
+            const downloadFileBtn = document.getElementById('downloadFileBtn');
             
-            modalFileName.textContent = file.name;
+            modalFileName.textContent = name;
             
-            // Configurar vista previa según el tipo de archivo
+            // Configurar vista previa
+            const extension = getExtension(filename).toLowerCase();
             let previewHTML = '';
-            if (file.contenido) {
-                // Mostrar contenido de código
+            let icon = 'fas fa-file-alt';
+            
+            if (extension === 'pdf') {
+                icon = 'fas fa-file-pdf';
                 previewHTML = `
-                    <div style="text-align: left; width: 100%;">
-                        <h4 style="color: var(--primary-light); margin-bottom: 10px;">${file.name}</h4>
-                        <pre style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; overflow-x: auto; color: var(--text-light);">
-${file.contenido}
-                        </pre>
-                        <p style="margin-top: 10px; color: var(--text-gray);"><small>Fecha: ${file.fecha} | Tipo: ${file.categoria}</small></p>
-                    </div>
+                    <i class="${icon}" style="font-size: 4rem; color: #ff6b6b; margin-bottom: 20px;"></i>
+                    <h4>${name}</h4>
+                    <p>Documento PDF disponible en GitHub</p>
+                    <p><small>Haz clic en "Ver en GitHub" para previsualizar el archivo</small></p>
                 `;
-            } else if (file.extension === '.pdf') {
-                // Mostrar preview de PDF
+            } else if (extension === 'r') {
+                icon = 'fas fa-code';
                 previewHTML = `
-                    <i class="fas fa-file-pdf" style="font-size: 4rem; color: #ff6b6b; margin-bottom: 20px;"></i>
-                    <h4>${file.name}</h4>
-                    <p>${file.descripcion}</p>
-                    <p><small>Fecha: ${file.fecha} | Páginas: 3-10</small></p>
-                    <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px;">
-                        📄 Documento académico listo para descargar
-                    </div>
+                    <i class="${icon}" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
+                    <h4>${name}</h4>
+                    <p>Código R disponible en GitHub</p>
+                    <p><small>Haz clic en "Ver en GitHub" para ver el código fuente</small></p>
                 `;
-            } else if (file.extension === '.png') {
-                // Mostrar preview de imagen
+            } else if (extension === 'png') {
+                icon = 'fas fa-image';
                 previewHTML = `
-                    <i class="fas fa-image" style="font-size: 4rem; color: #4dd0e1; margin-bottom: 20px;"></i>
-                    <h4>${file.name}</h4>
-                    <p>${file.descripcion}</p>
-                    <p><small>Fecha: ${file.fecha} | Resolución: 1920x1080</small></p>
-                    <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px;">
-                        🖼️ Imagen de captura de pantalla
-                    </div>
+                    <i class="${icon}" style="font-size: 4rem; color: #4dd0e1; margin-bottom: 20px;"></i>
+                    <h4>${name}</h4>
+                    <p>Imagen PNG disponible en GitHub</p>
+                    <p><small>Haz clic en "Ver en GitHub" para ver la imagen</small></p>
                 `;
-            } else if (file.rawFile) {
-                // Archivo subido desde PC
-                if (file.type && file.type.startsWith('image/')) {
-                    previewHTML = `
-                        <img src="${URL.createObjectURL(file.rawFile)}" alt="${file.name}" style="max-width: 100%; max-height: 300px; border-radius: 10px;">
-                        <p style="margin-top: 10px;">${file.descripcion}</p>
-                    `;
-                } else {
-                    previewHTML = `
-                        <i class="fas fa-file-alt" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
-                        <h4>${file.name}</h4>
-                        <p>${file.descripcion}</p>
-                    `;
-                }
+            } else if (extension === 'zip') {
+                icon = 'fas fa-file-archive';
+                previewHTML = `
+                    <i class="${icon}" style="font-size: 4rem; color: #ffd54f; margin-bottom: 20px;"></i>
+                    <h4>${name}</h4>
+                    <p>Archivo ZIP disponible en GitHub</p>
+                    <p><small>Contiene múltiples archivos comprimidos</small></p>
+                `;
             } else {
                 previewHTML = `
-                    <i class="fas fa-file-alt" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
-                    <h4>${file.name}</h4>
-                    <p>${file.descripcion}</p>
-                    <p><small>Fecha: ${file.fecha} | Categoría: ${file.categoria}</small></p>
+                    <i class="${icon}" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
+                    <h4>${name}</h4>
+                    <p>Archivo disponible en GitHub</p>
+                    <p><small>Haz clic en "Ver en GitHub" para previsualizar el contenido</small></p>
                 `;
             }
             
             modalPreview.innerHTML = previewHTML;
+            
+            // Configurar botones
+            viewFileBtn.href = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/blob/${GITHUB_BRANCH}/${encodeURIComponent(filename)}`;
+            downloadFileBtn.href = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${encodeURIComponent(filename)}`;
+            downloadFileBtn.download = filename;
+            
             modal.style.display = 'block';
-        }
-
-        // Descargar archivo
-        function downloadFile(fileId) {
-            const file = archivosAcademicos.find(f => f.id === fileId) || 
-                        uploadedFiles.find(f => f.id === fileId);
-            
-            if (!file) return;
-            
-            let blob;
-            let filename;
-            
-            if (file.rawFile) {
-                // Archivo subido desde PC
-                blob = file.rawFile;
-                filename = file.name;
-            } else if (file.extension === '.R' && file.contenido) {
-                // Archivo R con código
-                blob = new Blob([file.contenido], { type: 'text/plain' });
-                filename = file.name;
-            } else if (file.extension === '.pdf') {
-                // Crear PDF simulado
-                const pdfContent = `
-                    %PDF-1.4
-                    1 0 obj
-                    <<
-                    /Type /Catalog
-                    /Pages 2 0 R
-                    >>
-                    endobj
-                    2 0 obj
-                    <<
-                    /Type /Pages
-                    /Kids [3 0 R]
-                    /Count 1
-                    >>
-                    endobj
-                    3 0 obj
-                    <<
-                    /Type /Page
-                    /Parent 2 0 R
-                    /MediaBox [0 0 612 792]
-                    /Resources <<
-                    /Font <<
-                    /F1 4 0 R
-                    >>
-                    >>
-                    /Contents 5 0 R
-                    >>
-                    endobj
-                    4 0 obj
-                    <<
-                    /Type /Font
-                    /Subtype /Type1
-                    /BaseFont /Helvetica
-                    >>
-                    endobj
-                    5 0 obj
-                    <<
-                    /Length 100
-                    >>
-                    stream
-                    BT
-                    /F1 12 Tf
-                    72 720 Td
-                    (${file.name}) Tj
-                    0 -24 Td
-                    (${file.descripcion}) Tj
-                    0 -24 Td
-                    (Fecha: ${file.fecha}) Tj
-                    0 -24 Td
-                    (Curso: Estadística Espacial) Tj
-                    0 -24 Td
-                    (Estudiante: Uriel Rojas) Tj
-                    ET
-                    endstream
-                    endobj
-                    xref
-                    0 6
-                    0000000000 65535 f
-                    0000000010 00000 n
-                    0000000053 00000 n
-                    0000000102 00000 n
-                    0000000208 00000 n
-                    0000000250 00000 n
-                    trailer
-                    <<
-                    /Size 6
-                    /Root 1 0 R
-                    >>
-                    startxref
-                    350
-                    %%EOF
-                `;
-                blob = new Blob([pdfContent], { type: 'application/pdf' });
-                filename = file.name;
-            } else if (file.extension === '.png') {
-                // Crear imagen PNG simulada (contenido base64 simple)
-                const base64Image = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
-                blob = new Blob([atob(base64Image)], { type: 'image/png' });
-                filename = file.name;
-            } else {
-                // Archivo genérico
-                const content = `
-                    ${file.name}
-                    ${'='.repeat(file.name.length)}
-                    
-                    Descripción: ${file.descripcion}
-                    Fecha: ${file.fecha}
-                    Categoría: ${file.categoria}
-                    Unidad: ${file.unidad === 'unidad1' ? 'Primera Unidad' : 'Segunda Unidad'}
-                    Curso: Estadística Espacial
-                    Estudiante: Uriel Rojas Churquipa Quispe
-                    Universidad: U.N.A. - Puno
-                    
-                    Contenido del archivo académico.
-                    
-                    Este archivo fue generado automáticamente por el portafolio digital
-                    del curso de Estadística Espacial.
-                `;
-                blob = new Blob([content], { type: 'text/plain' });
-                filename = `${file.name}.txt`;
-            }
-            
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showNotification(`✓ Descargando: ${file.name}`);
-        }
-
-        // Descargar archivo actual del modal
-        function downloadCurrentFile() {
-            if (currentFile) {
-                downloadFile(currentFile.id);
-            }
         }
 
         // Cerrar modal
@@ -1923,14 +1748,13 @@ ${file.contenido}
         }
 
         // Mostrar notificación
-        function showNotification(message) {
-            // Crear elemento de notificación
+        function showNotification(message, type = 'info') {
+            const icon = type === 'success' ? '✓' : 'ℹ️';
             const notification = document.createElement('div');
             notification.className = 'notification';
-            notification.textContent = message;
+            notification.innerHTML = `<span>${icon}</span> ${message}`;
             document.body.appendChild(notification);
             
-            // Remover después de 3 segundos
             setTimeout(() => {
                 notification.style.animation = 'slideIn 0.3s ease reverse';
                 setTimeout(() => {
@@ -1940,89 +1764,104 @@ ${file.contenido}
         }
 
         // Filtrar archivos
-        function filterFiles() {
-            const allFiles = [...archivosAcademicos, ...uploadedFiles];
-            let filteredFiles = allFiles;
+        function filterArchivos() {
+            let filteredArchivos = archivosGitHub;
             
             if (currentFilter !== 'todos') {
-                filteredFiles = allFiles.filter(file => {
-                    const fileType = getFileType(file.categoria);
-                    
+                filteredArchivos = archivosGitHub.filter(archivo => {
                     if (currentFilter === 'unidad1' || currentFilter === 'unidad2') {
-                        return file.unidad === currentFilter;
+                        return archivo.unidad === currentFilter;
                     }
                     
-                    // Mapear filtros a tipos de archivo
+                    // Mapear filtros a categorías
                     const filterMap = {
-                        'pdf': 'pdf',
-                        'code': 'code',
-                        'doc': 'doc',
-                        'image': 'image'
+                        'pdf': 'PDF',
+                        'code': 'Código R',
+                        'zip': 'ZIP',
+                        'image': 'Imagen'
                     };
                     
-                    return fileType === filterMap[currentFilter];
+                    return archivo.categoria === filterMap[currentFilter];
                 });
             }
             
-            displayFiles(filteredFiles);
+            displayArchivos(filteredArchivos);
         }
 
-        // Manejar subida de archivos
-        function handleFileUpload(event) {
-            const files = Array.from(event.target.files);
-            
-            files.forEach((rawFile, index) => {
-                const file = {
-                    id: Date.now() + index,
-                    name: rawFile.name,
-                    descripcion: 'Archivo subido desde tu computadora',
-                    fecha: new Date().toLocaleDateString('es-ES'),
-                    unidad: 'unidad1',
-                    categoria: getCategoryFromExtension(rawFile.name),
-                    icon: getIconFromExtension(rawFile.name),
-                    extension: '.' + rawFile.name.split('.').pop().toLowerCase(),
-                    rawFile: rawFile,
-                    type: rawFile.type
-                };
+        // Cargar archivos desde GitHub API (opcional, para futuras mejoras)
+        async function loadArchivosFromGitHub() {
+            try {
+                const response = await fetch(GITHUB_API);
+                const data = await response.json();
                 
-                uploadedFiles.push(file);
-            });
-            
-            filterFiles();
-            updateStats([...archivosAcademicos, ...uploadedFiles]);
-            event.target.value = '';
-            showNotification(`✓ Se subieron ${files.length} archivo(s)`);
+                // Filtrar solo los archivos que necesitamos
+                const archivosEncontrados = data.filter(item => 
+                    item.type === 'file' && 
+                    !item.name.includes('index.html') && 
+                    !item.name.includes('.git')
+                ).map(item => ({
+                    name: item.name,
+                    filename: item.name,
+                    unidad: determinarUnidad(item.name),
+                    categoria: determinarCategoria(item.name),
+                    icon: determinarIcono(item.name),
+                    extension: '.' + item.name.split('.').pop().toLowerCase(),
+                    descripcion: obtenerDescripcion(item.name),
+                    size: item.size,
+                    url: item.download_url
+                }));
+                
+                console.log('Archivos encontrados en GitHub:', archivosEncontrados);
+                return archivosEncontrados;
+                
+            } catch (error) {
+                console.error('Error al cargar archivos desde GitHub:', error);
+                return archivosGitHub; // Usar datos locales como respaldo
+            }
         }
 
-        // Obtener categoría desde extensión
-        function getCategoryFromExtension(filename) {
+        // Funciones auxiliares para determinar metadata
+        function determinarUnidad(filename) {
+            const archivosUnidad2 = [
+                'Resumen de Lectura.pdf',
+                'Instalar QGIS.pdf',
+                'Polígonos Puntos y Líneas.zip',
+                'Puno - Conectividad.pdf',
+                'Representación Problemática Nacional.pdf',
+                '1_Introducción.pdf',
+                '2-Materiales_Métodos.pdf',
+                '3_Resultados.pdf',
+                '4_Discusión y Conclusiones.pdf',
+                'Paper Completo.pdf',
+                '1_Shapes to Google Earth.pdf',
+                'Application Google Earth Engine Apps.pdf'
+            ];
+            
+            return archivosUnidad2.includes(filename) ? 'unidad2' : 'unidad1';
+        }
+
+        function determinarCategoria(filename) {
             const ext = filename.split('.').pop().toLowerCase();
             if (ext === 'pdf') return 'PDF';
             if (ext === 'r') return 'Código R';
-            if (['png', 'jpg', 'jpeg', 'gif'].includes(ext)) return 'Imagen';
-            if (['docx', 'doc'].includes(ext)) return 'Documentos';
+            if (ext === 'png' || ext === 'jpg' || ext === 'jpeg') return 'Imagen';
+            if (ext === 'zip') return 'ZIP';
             return 'Otros';
         }
 
-        // Obtener icono desde extensión
-        function getIconFromExtension(filename) {
+        function determinarIcono(filename) {
             const ext = filename.split('.').pop().toLowerCase();
             if (ext === 'pdf') return '📄';
             if (ext === 'r') return '📊';
-            if (['png', 'jpg', 'jpeg', 'gif'].includes(ext)) return '🖼️';
-            if (['docx', 'doc'].includes(ext)) return '📝';
-            return '💾';
+            if (ext === 'png' || ext === 'jpg' || ext === 'jpeg') return '🖼️';
+            if (ext === 'zip') return '📦';
+            return '📁';
         }
 
-        // Actualizar estadísticas
-        function updateStats(files) {
-            const totalFiles = files.length;
-            const totalPDFs = files.filter(file => 
-                file.categoria === 'PDF'
-            ).length;
-            
-            document.getElementById('totalFiles').textContent = totalFiles;
-            document.getElementById('totalPDFs').textContent = totalPDFs;
+        function obtenerDescripcion(filename) {
+            // Buscar descripción en los datos locales
+            const archivoLocal = archivosGitHub.find(a => a.filename === filename);
+            return archivoLocal ? archivoLocal.descripcion : 'Archivo académico del curso de Estadística Espacial';
         }
     </script>
 </body>
