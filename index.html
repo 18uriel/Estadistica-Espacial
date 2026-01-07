@@ -460,6 +460,7 @@
             margin-bottom: 10px;
             font-size: 0.85rem;
             color: var(--text-gray);
+            flex-wrap: wrap;
         }
 
         .tarea-meta-item {
@@ -934,6 +935,7 @@
                     <h3>Enlaces Rápidos</h3>
                     <div class="footer-links">
                         <a href="#home">Inicio</a>
+                        <a href="#tareas">Tareas Asignadas</a>
                         <a href="#trabajos">Mis Trabajos</a>
                         <a href="#stats">Estadísticas</a>
                         <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">GitHub</a>
@@ -951,7 +953,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 Uriel Rojas Churquipa Quispe - Universidad Nacional del Altiplano Puno</p>
+                <p>&copy; 2026 Uriel Rojas Churquipa Quispe - Universidad Nacional del Altiplano Puno</p>
                 <p>Proyecto de Estadística Espacial - Décimo Semestre - Todos los derechos reservados</p>
             </div>
         </div>
@@ -1153,39 +1155,9 @@
             { name: 'gauseano.docx', path: 'gauseano.docx', size: 80000, unidad: 'unidad1', categoria: 'Semana 4' },
             { name: 'gauseano.log', path: 'gauseano.log', size: 25000, unidad: 'unidad1', categoria: 'Semana 4' },
             
-            // UNIDAD 1 - Semana N° 5 - Geostatistical Data
-            // (Por agregar si existen archivos)
-            
-            // UNIDAD 1 - Semana N° 6 - Autocorrelación Espacial
-            // (Por agregar si existen archivos)
-            
-            // UNIDAD 1 - Semana N° 7 - Pesos Espaciales
-            // (Por agregar si existen archivos)
-            
             // UNIDAD 1 - Semana N° 8 - Paper
             { name: 'Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf', path: 'Research Statement - URIEL ROJAS CHURQUIPA QUISPE.pdf', size: 170000, unidad: 'unidad1', categoria: 'Semana N° 8' },
             { name: 'Resumen de Lectura - Artículos.pdf', path: 'Resumen de Lectura - Artículos.pdf', size: 160000, unidad: 'unidad1', categoria: 'Semana N° 8' },
-            
-            // UNIDAD 2 - Semana N° 9 - Datasets Espaciales
-            // (Por agregar contenido específico)
-            
-            // UNIDAD 2 - Semana N 10 - GIS SYSTEMS
-            // (Por agregar contenido específico)
-            
-            // UNIDAD 2 - Semana N° 11 - Visualización de MAPAS
-            // (Por agregar contenido específico)
-            
-            // UNIDAD 2 - Seman N° 12 - Delimitación Territorial
-            // (Por agregar contenido específico)
-            
-            // UNIDAD 2 - Semana N° 13 - Maps - heat
-            // (Por agregar contenido específico)
-            
-            // UNIDAD 2 - Semana N°15 - Problematica Nacional
-            // (Por agregar contenido específico)
-            
-            // UNIDAD 2 - Semana N° 16 - GIS + Google Earth Engine
-            { name: '1_Shapes to Google Earth.pdf', path: '1_Shapes to Google Earth.pdf', size: 150000, unidad: 'unidad2', categoria: 'Semana N° 16' },
             
             // UNIDAD 2 - Semana N° 17 - Paper 2da Unidad
             { name: '1_Introducción.pdf', path: '1_Introducción.pdf', size: 120000, unidad: 'unidad2', categoria: 'Semana N° 17' },
@@ -1194,3 +1166,277 @@
             { name: '4_Discusión y Conclusiones.pdf', path: '4_Discusión y Conclusiones.pdf', size: 135000, unidad: 'unidad2', categoria: 'Semana N° 17' },
             { name: 'Paper Completo.pdf', path: 'Paper Completo.pdf', size: 250000, unidad: 'unidad2', categoria: 'Semana N° 17' }
         ];
+
+        let currentFilter = 'todos';
+        let uploadedFiles = [];
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', function() {
+            initParticles();
+            initEventListeners();
+            loadTareasAsignadas();
+            loadFilesFromGitHub();
+        });
+
+        // Inicializar partículas de fondo
+        function initParticles() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#6C4EF4" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#6C4EF4",
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" },
+                        resize: true
+                    }
+                }
+            });
+        }
+
+        // Inicializar event listeners
+        function initEventListeners() {
+            // Filtros
+            const filterButtons = document.querySelectorAll('.filtro-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.getAttribute('data-filter');
+                    filterFiles();
+                });
+            });
+
+            // Subida de archivos
+            const fileUpload = document.getElementById('fileUpload');
+            fileUpload.addEventListener('change', handleFileUpload);
+        }
+
+        // Cargar tareas asignadas
+        function loadTareasAsignadas() {
+            const container = document.getElementById('tareasContainer');
+            
+            const tareasHTML = tareasAsignadas.map(tarea => {
+                const unidadNombre = tarea.unidad === 'unidad1' ? 'Primera Unidad' : 'Segunda Unidad';
+                const statusClass = tarea.estado === 'completado' ? 'status-completado' : 'status-pendiente';
+                const statusText = tarea.estado === 'completado' ? 'Completado' : 'Pendiente';
+                
+                return `
+                    <div class="tarea-card">
+                        <div class="tarea-icon">📋</div>
+                        <div class="tarea-content">
+                            <h3 class="tarea-title">${tarea.titulo}</h3>
+                            <div class="tarea-meta">
+                                <div class="tarea-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    Inicio: ${tarea.fechaInicio}
+                                </div>
+                                <div class="tarea-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    Cierre: ${tarea.fechaCierre}
+                                </div>
+                            </div>
+                            <p class="tarea-description">${tarea.descripcion}</p>
+                            <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap;">
+                                <span class="tarea-status ${statusClass}">${statusText}</span>
+                                <span style="color: var(--text-gray); font-size: 0.85rem;">${unidadNombre}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = tareasHTML;
+        }
+
+        // Cargar archivos desde GitHub
+        async function loadFilesFromGitHub() {
+            try {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                displayFiles(manualFiles);
+                updateStats(manualFiles);
+            } catch (error) {
+                console.error('Error al cargar archivos desde GitHub:', error);
+                displayFiles(manualFiles);
+                updateStats(manualFiles);
+            }
+        }
+
+        // Mostrar archivos en la interfaz
+        function displayFiles(files) {
+            const container = document.getElementById('trabajosContainer');
+            
+            if (files.length === 0) {
+                container.innerHTML = `
+                    <div class="loading-container">
+                        <i class="fas fa-folder-open" style="font-size: 3rem; color: var(--text-gray); margin-bottom: 20px;"></i>
+                        <p style="color: var(--text-gray);">No se encontraron archivos para mostrar.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = files.map(file => createFileCard(file)).join('');
+        }
+
+        // Crear tarjeta de archivo
+        function createFileCard(file) {
+            const extension = file.name.includes('.') ? file.name.split('.').pop().toLowerCase() : 'folder';
+            const fileType = getFileType(extension);
+            const badgeClass = getBadgeClass(extension);
+            const icon = getFileIcon(extension);
+            const unidad = file.unidad === 'unidad1' ? 'Primera Unidad' : 'Segunda Unidad';
+            const sizeText = file.size > 0 ? `Tamaño: ${formatFileSize(file.size)}` : 'Carpeta de trabajo';
+            const categoria = file.categoria || 'Sin categoría';
+            
+            // Generar URL de descarga de GitHub
+            const downloadUrl = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${encodeURIComponent(file.path)}`;
+            const viewUrl = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/blob/${GITHUB_BRANCH}/${encodeURIComponent(file.path)}`;
+            
+            return `
+                <div class="trabajo-card" data-type="${fileType}" data-unidad="${file.unidad}">
+                    <div class="trabajo-badge ${badgeClass}">${extension === 'folder' ? 'FOLDER' : extension.toUpperCase()}</div>
+                    <div class="trabajo-icon">${icon}</div>
+                    <h3 class="trabajo-title">${file.name}</h3>
+                    <p class="trabajo-description">
+                        ${file.size > 0 ? `Archivo de ${fileType}` : 'Contenido académico'} perteneciente a la ${unidad}. 
+                        ${sizeText}
+                    </p>
+                    <div class="trabajo-meta">
+                        <span class="trabajo-date">${categoria}</span>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            ${file.size > 0 ? `
+                                <a href="${downloadUrl}" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;" download target="_blank">
+                                    <i class="fas fa-download"></i> Descargar
+                                </a>
+                                <a href="${viewUrl}" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;" target="_blank">
+                                    <i class="fas fa-eye"></i> Ver
+                                </a>
+                            ` : `
+                                <a href="${viewUrl}" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;" target="_blank">
+                                    <i class="fas fa-folder-open"></i> Abrir
+                                </a>
+                            `}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Obtener tipo de archivo
+        function getFileType(extension) {
+            if (['pdf'].includes(extension)) return 'pdf';
+            if (['docx', 'doc'].includes(extension)) return 'doc';
+            if (['r'].includes(extension)) return 'code';
+            if (['png', 'jpg', 'jpeg'].includes(extension)) return 'image';
+            if (['log', 'tex', 'html'].includes(extension)) return 'log';
+            return 'default';
+        }
+
+        // Obtener clase de badge
+        function getBadgeClass(extension) {
+            if (['pdf'].includes(extension)) return 'badge-pdf';
+            if (['docx', 'doc'].includes(extension)) return 'badge-docx';
+            if (['r'].includes(extension)) return 'badge-r';
+            if (['log', 'tex'].includes(extension)) return 'badge-log';
+            if (['png'].includes(extension)) return 'badge-png';
+            if (['jpg', 'jpeg'].includes(extension)) return 'badge-jpg';
+            if (['html'].includes(extension)) return 'badge-html';
+            if (['folder'].includes(extension)) return 'badge-folder';
+            return 'badge-default';
+        }
+
+        // Obtener icono de archivo
+        function getFileIcon(extension) {
+            if (['pdf'].includes(extension)) return '📄';
+            if (['docx', 'doc'].includes(extension)) return '📝';
+            if (['r'].includes(extension)) return '📊';
+            if (['png', 'jpg', 'jpeg'].includes(extension)) return '🖼️';
+            if (['log', 'tex', 'html'].includes(extension)) return '📋';
+            return '📁';
+        }
+
+        // Formatear tamaño de archivo
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Filtrar archivos
+        function filterFiles() {
+            const allFiles = [...manualFiles, ...uploadedFiles];
+            let filteredFiles = allFiles;
+            
+            if (currentFilter !== 'todos') {
+                filteredFiles = allFiles.filter(file => {
+                    const fileType = getFileType(file.name.split('.').pop().toLowerCase());
+                    
+                    if (currentFilter === 'unidad1' || currentFilter === 'unidad2') {
+                        return file.unidad === currentFilter;
+                    }
+                    
+                    return fileType === currentFilter;
+                });
+            }
+            
+            displayFiles(filteredFiles);
+        }
+
+        // Manejar subida de archivos
+        function handleFileUpload(event) {
+            const files = Array.from(event.target.files);
+            
+            files.forEach(file => {
+                const newFile = {
+                    name: file.name,
+                    path: file.name,
+                    size: file.size,
+                    unidad: 'unidad1'
+                };
+                
+                uploadedFiles.push(newFile);
+            });
+            
+            filterFiles();
+            updateStats([...manualFiles, ...uploadedFiles]);
+            event.target.value = '';
+            alert(`Se han subido ${files.length} archivo(s) correctamente.`);
+        }
+
+        // Actualizar estadísticas
+        function updateStats(files) {
+            const totalFiles = files.length;
+            const totalPDFs = files.filter(file => 
+                file.name.toLowerCase().endsWith('.pdf')
+            ).length;
+            
+            document.getElementById('totalFiles').textContent = totalFiles;
+            document.getElementById('totalPDFs').textContent = totalPDFs;
+        }
+    </script>
+</body>
+</html>
