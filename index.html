@@ -413,6 +413,88 @@
             gap: 30px;
         }
 
+        .tareas-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tarea-card {
+            background: var(--gradient-card);
+            border-radius: 20px;
+            padding: 25px 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .tarea-card:hover {
+            transform: translateX(10px);
+            border-color: rgba(108, 78, 244, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .tarea-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .tarea-content {
+            flex: 1;
+        }
+
+        .tarea-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-light);
+        }
+
+        .tarea-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .tarea-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tarea-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .tarea-status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .status-completado {
+            background: rgba(0, 210, 168, 0.2);
+            color: #00D2A8;
+            border: 1px solid rgba(0, 210, 168, 0.3);
+        }
+
+        .status-pendiente {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffd54f;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
         .trabajo-card {
             background: var(--gradient-card);
             border-radius: 20px;
@@ -691,6 +773,7 @@
 
                 <div class="nav-links">
                     <a href="#home">Inicio</a>
+                    <a href="#tareas">Tareas Asignadas</a>
                     <a href="#trabajos">Mis Trabajos</a>
                     <a href="#stats">Estadísticas</a>
                     <a href="https://github.com/18uriel/Estadistica-Espacial" target="_blank">GitHub</a>
@@ -755,6 +838,9 @@
                 <div class="btn-group">
                     <a href="https://github.com/18uriel/Estadistica-Espacial" class="btn btn-primary" target="_blank">
                         <i class="fab fa-github"></i> Explorar Repositorio
+                    </a>
+                    <a href="#tareas" class="btn btn-success">
+                        <i class="fas fa-tasks"></i> Ver Tareas
                     </a>
                     <a href="#trabajos" class="btn btn-accent">
                         <i class="fas fa-folder-open"></i> Ver Mis Trabajos
@@ -876,6 +962,173 @@
         const GITHUB_USER = '18uriel';
         const GITHUB_REPO = 'Estadistica-Espacial';
         const GITHUB_BRANCH = 'main';
+
+        // Tareas asignadas organizadas por unidad
+        const tareasAsignadas = [
+            // UNIDAD 1
+            { 
+                titulo: 'Posicionamiento de Información', 
+                fechaInicio: '10/09/2025 17:36', 
+                fechaCierre: '10/09/2025 19:00',
+                descripcion: 'Adjuntar la Actividad de clase (Posicionamiento de una variable en el mapa de Puno) DATOS_ENA',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Ejemplo: Muestreo Bootstrap', 
+                fechaInicio: '16/09/2025 17:35', 
+                fechaCierre: '16/09/2025 19:00',
+                descripcion: 'Escribe un fragmento de código que realice el muestreo por bootstrap considerando principios de aleatoriedad',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Gaussian Random Fields', 
+                fechaInicio: '17/09/2025 17:22', 
+                fechaCierre: '17/09/2025 18:30',
+                descripcion: 'Adjuntar Ejemplo de Clase',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Research Statement [3 páginas]', 
+                fechaInicio: '26/09/2025 15:39', 
+                fechaCierre: '30/09/2025 13:00',
+                descripcion: 'Research Statement [3 páginas] - 20 referencias mínimo',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Repositorio de github', 
+                fechaInicio: '26/09/2025 14:48', 
+                fechaCierre: '26/09/2025 19:00',
+                descripcion: 'Evidencia de pull request para portafolios',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Aplicación de Autocorrelación Espacial', 
+                fechaInicio: '03/10/2025 15:14', 
+                fechaCierre: '07/10/2025 15:00',
+                descripcion: 'Realizar un resumen de los artículos y su convergencia, con la autocorrelación espacial.',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Ejemplificar [1]Matrices de Pesos, [2]Moran, [3]Geary y [4]Hotspots', 
+                fechaInicio: '14/10/2025 17:26', 
+                fechaCierre: '15/10/2025 17:00',
+                descripcion: 'Desarrollar un ejemplo de código en R para: [1]Matrices de Pesos, [2]Moran...',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Adjuntar Evidencia de Paper', 
+                fechaInicio: '17/10/2025 16:06', 
+                fechaCierre: '19/10/2025 23:59',
+                descripcion: '1. Adjuntar Artículo Científico (1 archivo) 2. Correo de acuse de recibo (1 archivo)...',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Resumen de Lectura', 
+                fechaInicio: '22/10/2025 17:07', 
+                fechaCierre: '23/10/2025 23:59',
+                descripcion: 'En máximo de 2 hojas realizar un resumen sobre los papers adjuntos. el resumen debe ser manuscrito (no word, latex, no PC) - (A Mano)...',
+                unidad: 'unidad1',
+                estado: 'completado'
+            },
+
+            // UNIDAD 2
+            { 
+                titulo: 'Instalar QGIS', 
+                fechaInicio: '28/10/2025 17:18', 
+                fechaCierre: '28/10/2025 23:59',
+                descripcion: 'Instalar QGIS, enviar evidencia de la instalación de programa',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Polígonos Puntos y Líneas', 
+                fechaInicio: '07/11/2025 16:09', 
+                fechaCierre: '10/11/2025 23:09',
+                descripcion: 'Realizar el facsímil de la practica 1, con imáges del drone.',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Puno - Conectividad', 
+                fechaInicio: '03/12/2025 18:26', 
+                fechaCierre: '03/12/2025 23:59',
+                descripcion: 'Adjuntar Vista de Impresión de la Practica de Clase',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Representación Problemática Nacional', 
+                fechaInicio: '05/12/2025 16:17', 
+                fechaCierre: '05/12/2025 23:59',
+                descripcion: 'Adjuntar la aplicación de ubicación geoespacial para representar datos de la problemática nacional (Mapas QGIS) Interpretación del aporte a la problemática identificada (Interpretación)',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: '1_Introducción', 
+                fechaInicio: '10/12/2025 15:29', 
+                fechaCierre: '12/12/2025 15:29',
+                descripcion: 'Introducción del Artículo Científico.',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: '2-Materiales_Métodos', 
+                fechaInicio: '10/12/2025 15:31', 
+                fechaCierre: '12/12/2025 15:31',
+                descripcion: 'Materiales y Métodos',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: '3_Resultados', 
+                fechaInicio: '10/12/2025 15:32', 
+                fechaCierre: '21/12/2025 18:23',
+                descripcion: 'Resultados del Paper de la 2da unidad',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: '4_Discusión y Conclusiones', 
+                fechaInicio: '10/12/2025 15:32', 
+                fechaCierre: '21/12/2025 18:24',
+                descripcion: '4_Discusión y Conclusiones',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Paper Completo', 
+                fechaInicio: '10/12/2025 15:35', 
+                fechaCierre: '22/12/2025 23:04',
+                descripcion: 'Adjuntar el Paper Completo del Curso',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: '1_Shapes to Google Earth', 
+                fechaInicio: '10/12/2025 17:00', 
+                fechaCierre: '10/12/2025 23:59',
+                descripcion: 'Shapes from Qgis to Google Earth Engine',
+                unidad: 'unidad2',
+                estado: 'completado'
+            },
+            { 
+                titulo: 'Aplicación Google Earth Engine Apps', 
+                fechaInicio: '10/12/2025 17:45', 
+                fechaCierre: '15/12/2025 23:59',
+                descripcion: 'Aplicación Google Earth Engine Apps - Utilizando los datos seleccionados, en su proyecto otorgarle funcionalidad y añadir datasets de apis, satélites y fuentes de información que le otorgue valor agregado y le dé funcionalidades de datacience a la aplicación.',
+                unidad: 'unidad2',
+                estado: 'completado'
+            }
+        ];
 
         // Archivos organizados por unidad
         const manualFiles = [
